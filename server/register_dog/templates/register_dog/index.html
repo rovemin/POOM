@@ -1,0 +1,28 @@
+<!--POOM 메인 페이지-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>POOM main page</title>
+        <style>
+            nav {background-color: darkgreen; font-size: 150%; text-align: center}
+            nav a {color:gold}
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="./register_dog.html">실종견 등록하기</a>
+            <a href="./register_dog.html">목격/구조 제보하기</a>
+        </nav>
+
+        <h1>POOM</h1>
+
+        {% for p in posts %}
+            <hr/>
+            <h2>{{ p.dog_name }}</h2>
+            <h2>{{ p.category }}</h2>
+            <h4>{{ p.location_city }}</h4>
+            <p>{{ p.description }}</p>
+        {% endfor %}
+
+    </body>
+</html>
