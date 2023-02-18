@@ -6,7 +6,7 @@ def index(request):
 
     return render(
         request,
-        'register_dog/index.html',
+        'register_dog/main.html',
         {
             'posts': posts,
         }
