@@ -6,14 +6,29 @@
         <title>POOM main page</title>
         <link rel="stylesheet" href="{% static 'register_dog/bootstrap/bootstrap.min.css' %}" media="screen">
         <style>
-            nav {background-color: darkgreen; font-size: 150%; text-align: center}
+            nav {background-color: darkgreen; font-size: 120%; text-align: center}
             nav a {color:gold}
         </style>
     </head>
     <body>
         <nav>
-            <a href="./registerDog.html">실종견 등록하기</a>
-            <a href="./registerDog.html">목격/구조 제보하기</a>
+            <!-- 등록, 제보 html 민서 만들 예정 -->
+            <a href="./lost_form.html">실종견 등록하기</a>
+            <a href="./found_form.html">목격/구조 제보하기</a>
+
+            <!--    로그인       -->
+            {% if user.is_authenticated %}
+            <a href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+            {% else %}
+            <a href="{% url 'common:login' %}">로그인</a>
+            {% endif %}
+
+            <!--마이페이지-->
+            <a href="./mypage.html">마이페이지</a>
+            <!--회원가입-->
+            {% if not user.is_authenticated %}
+            <a href="{% url 'common:signup' %}">회원가입</a>
+            {% endif %}
         </nav>
 
         <h1>POOM</h1>

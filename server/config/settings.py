@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'register_dog',
+    'common',
 ]
 
 MIDDLEWARE = [
@@ -114,3 +115,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 로그인 성공 후 이동하는 URL
+LOGIN_REDIRECT_URL = '/register_dog/'
+# 로그아웃시 이동하는 URL
+LOGOUT_REDIRECT_URL = '/register_dog/'
