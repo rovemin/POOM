@@ -3,7 +3,9 @@ from django.contrib.auth import views as auth_views
 
 from . import views
 
+app_name = 'register_dog'
+
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='index'),
 
 ]
