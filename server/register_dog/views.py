@@ -51,7 +51,7 @@ def index2(request):
 #     )
 
 # 보호자가 실종견 등록
-class LostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class LostCreate(LoginRequiredMixin, CreateView):
     model = Dog_post
     fields = ['post_title', 'category', 'dog_name', 'breed', 'location_city',
               'location_detail', 'date', 'sex', 'age', 'reward', 'description',
@@ -59,19 +59,19 @@ class LostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     template_name = 'register_dog/dog_post_lost_form.html'
     success_url = '/create_post_lost/'
 
-    def test_func(self):
-        return self.request.user.is_superuser or self.request.user.is_staff
+    # def test_func(self):
+    #     return self.request.user.is_superuser or self.request.user.is_staff
 
     def form_valid(self, form):
         current_user = self.request.user
-        if current_user.is_authenticated and (current_user.is_staff or current_user.is_superuser):
+        if current_user.is_authenticated:
             form.instance.author = current_user
             return super(LostCreate, self).form_valid(form)
         else:
             return redirect('/create_post_lost/')
 
 # 실종견 제보
-class FoundCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class FoundCreate(LoginRequiredMixin, CreateView):
     model = Dog_post
     fields = ['post_title', 'category', 'breed', 'location_city',
               'location_detail', 'date', 'sex', 'description',
@@ -79,8 +79,8 @@ class FoundCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     template_name = 'register_dog/dog_post_found_form.html'
     success_url = '/create_post_found/'
 
-    def test_func(self):
-        return self.request.user.is_superuser or self.request.user.is_staff
+    # def test_func(self):
+    #     return self.request.user.is_superuser or self.request.user.is_staff
 
     def form_valid(self, form):
         current_user = self.request.user
