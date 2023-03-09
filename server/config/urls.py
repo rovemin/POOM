@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('register_dog/', include('register_dog.urls')),
+    path('', include('register_dog.urls')),
     path('admin/', admin.site.urls),
     path('common/', include('common.urls')),
 ]
