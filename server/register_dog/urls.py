@@ -7,7 +7,8 @@ app_name = 'register_dog'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('create_post/', views.LostCreate.as_view()),
-
+    path('main2/', views.index2, name='index2'),
+    path('create_post_lost/', views.LostCreate.as_view()),
+    path('create_post_found/', views.FoundCreate.as_view()),
 
 ]

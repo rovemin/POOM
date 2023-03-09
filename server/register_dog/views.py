@@ -5,11 +5,22 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 def index(request):
-    posts = Dog_post.objects.all()
+    posts = Dog_post.objects.filter(category=1)
 
     return render(
         request,
         'register_dog/main1.html',
+        {
+            'posts': posts,
+        }
+    )
+
+def index2(request):
+    posts = Dog_post.objects.filter(category=2)
+
+    return render(
+        request,
+        'register_dog/main2.html',
         {
             'posts': posts,
         }
@@ -39,12 +50,14 @@ def index(request):
 #         }
 #     )
 
+# 보호자가 실종견 등록
 class LostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Dog_post
     fields = ['post_title', 'category', 'dog_name', 'breed', 'location_city',
               'location_detail', 'date', 'sex', 'age', 'reward', 'description',
               'image1', 'image2', 'image3']
-    success_url = '/create_post/'
+    template_name = 'register_dog/dog_post_lost_form.html'
+    success_url = '/create_post_lost/'
 
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
@@ -55,4 +68,24 @@ class LostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             form.instance.author = current_user
             return super(LostCreate, self).form_valid(form)
         else:
-            return redirect('/create_post/')
+            return redirect('/create_post_lost/')
+
+# 실종견 제보
+class FoundCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Dog_post
+    fields = ['post_title', 'category', 'breed', 'location_city',
+              'location_detail', 'date', 'sex', 'description',
+              'image1', 'image2', 'image3']
+    template_name = 'register_dog/dog_post_found_form.html'
+    success_url = '/create_post_found/'
+
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_staff
+
+    def form_valid(self, form):
+        current_user = self.request.user
+        if current_user.is_authenticated and (current_user.is_staff or current_user.is_superuser):
+            form.instance.author = current_user
+            return super(FoundCreate, self).form_valid(form)
+        else:
+            return redirect('/create_post_found/')
