@@ -76,6 +76,21 @@ class FoundCreate(LoginRequiredMixin, CreateView):
     fields = ['post_title', 'category', 'breed', 'location_city',
               'location_detail', 'date', 'sex', 'description',
               'image1', 'image2', 'image3']
+    #label = {
+    #
+    #    'post_title' : '글 제목*',
+    #    'category' : '글 종류',
+    #    'breed' : '견종',
+    #    'location_city' : '발견된 위치(시/도)*',
+    #    'location_detail' : '발견된 위치(구체적인 장소)',
+    #    'date' : '발견 날짜(YYYY-MM-DD)*',
+    #    'sex' : '성별',
+    #    'description' : '기타 특징*',
+    #    'image1' : '사진1',
+    #    'image2' : '사진2',
+    #    'image3' : '사진3'
+    #}
+
     template_name = 'register_dog/dog_post_found_form.html'
     success_url = '/create_post_found/'
 
