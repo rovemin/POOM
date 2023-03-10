@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="description" content="POOM">
+  <title>POOM</title>
+  <link href="{% static 'register_dog/main2.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+  <!--헤더-->
+  <div class="nav">
+    <a href="{% url 'register_dog:index' %}">
+      <img src="" title="로고자리" />
+    </a>
+    <div class="nav-items">
+
+      {% if user.is_authenticated %}
+      <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_lost/'">실종견 등록하기</button>
+      <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_found/'">목격/구조 제보하기</button>
+      {% endif %}
+
+      <div class="nav-item" onclick="location.href='http://127.0.0.1:8000/'">Home</div>
+      {% if user.is_authenticated %}
+      <a class="nav-item" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+      {% else %}
+      <a class="nav-item" href="{% url 'common:login' %}">로그인</a>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+      <div class="nav-item" onclick="location.href='./mypage.html'">마이페이지 </div>
+      {% endif %}
+
+      {% if not user.is_authenticated %}
+      <a class="nav-item" href="{% url 'common:signup' %}">회원가입</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!--검색바-->
+
+  <div class="search_box">
+    <button class="sbut2">이미지 검색</button>
+    <input class="search" type="text" placeholder="실종견 검색">
+    <button class="sbut">검색</button>
+
+  </div>
+
+  <!--리스트 설명-->
+  <div class="mainlist">
+    <div class="lost_list" onclick="location.href='http://127.0.0.1:8000'"> 실종 신고 목록</div>
+    <div class="found_list" onclick="location.href='http://127.0.0.1:8000/main2/'"> 제보 목록 </div>
+  </div>
+
+
+  <!--리스트-->
+
+  <div class=" container">
+    <div class="dog_list">
+      {% if posts.exists %}
+      <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
+        {% for p in posts %}
+        <div class="card">
+
+          <div class="image">
+            {% if p.image1.url != None %}
+              <img src="{{ p.image1.url }}" alt="{{ p }}">
+            {% else %}
+              <img src="{% static 'logo/blank.png' %}">
+            {% endif %}
+          </div>
+          <div class="text">
+            <h3>{{ p.post_title }}</h3>
+            <p>지역: {{ p.location_city }}</p>
+            <p>내용: {{ p.description | truncatewords:3 }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <h3 class="text">아직 게시물이 없습니다.</h3>
+      {% endif %}
+
+
+    </div>
+  </div>
+
+  <!--이미지 검색 팝업-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+/* 헤더 */
+.nav {
+  height: 80px;
+ border-bottom: 2px solid #FFDA7C;
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  margin-left: auto;
+  margin-right: 60px;
+
+}
+
+.nav-item{
+  margin-top: auto;
+  margin-left: 20px;
+}
+
+.but {
+  margin-top: 20px;
+  text-align: center;
+  width: 150px;
+  padding: 8px;
+  border: 2px solid #FFDA7C;
+  border-radius: 20px;
+  color:solid black;
+  background: #FFDA7C;
+  margin-left: auto;
+  margin-right: 20px;
+  font-weight: bold;
+
+}
+
+
+/*검색창*/
+.sbut2 {
+   display: flex;
+justify-content: center;
+ align-items: center;
+  margin-top: 30px;
+   margin-bottom: 30px;
+  text-align: center;
+  width: 186px;
+  height: 40px;
+  border: 2px solid #FFDA7C;
+  border-radius: 10px;
+  background: #FFDA7C;
+  outline: none;
+  float: left;
+  color:black;
+  margin-right: 15px;
+  font-size: 15px;
+  font-weight: bold;
+
+}
+
+.search_box {
+  display: flex;
+justify-content: center;
+ align-items: center;
+  margin-top: 30px;
+   margin-bottom: 30px;
+
+}
+
+.search {
+    display: flex;
+justify-content: center;
+ align-items: center;
+  margin-top: 30px;
+   margin-bottom: 30px;
+ text-align: center;
+  font-size: 15px;
+  height: 34px;
+  width: 618px;
+  border: 2px solid #D9D9D9;
+  background: #ffffff;
+    border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+
+}
+  input{
+
+  outline: none;
+
+  }
+
+textarea{
+  resize: none;
+}
+
+.sbut {
+
+  text-align: center;
+  width: 60px;
+  height: 40px;
+  border: 2px solid #FFDA7C;
+  border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+  background: #FFDA7C;
+  outline: none;
+  float: right;
+  color:black;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+
+/*리스트 설명*/
+
+.mainlist{
+    display: flex;
+  justify-content: center;
+ align-items: center;
+  margin: auto;
+    font-size: 18px;
+  font-weight: bold;
+  color:black;
+}
+.found_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: ceneter;
+  width: 440px;
+  background-color: #FFDA7C;
+  border: 1px solid #FFDA7C;
+  height: 45px;
+  float:left;
+}
+.lost_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: ceneter;
+  width: 440px;
+  background-color: white;
+  border: 1px solid #FFDA7C;
+  height: 45px;
+  float:left;
+}
+
+/*리스트*/
+
+.container{
+  margin-top: 15px;
+  max-width: 880px;
+  margin-left:auto;
+  margin-bottom: auto;
+  margin-right: auto;
+
+}
+
+.dog_list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  float: left;
+
+}
+
+.dog_list .card {
+  border: 1px solid #D9D9D9;
+  border-radius: 5px;
+  height: 320px;
+  width: 250px;
+  padding: 5px;
+  margin-bottom: 15px;
+
+  margin-left: 15px;
+  margin-right: 15px;
+
+
+}
+
+.dog_list .card img{
+  height: 200px;
+  width: 250px;
+}
+.dog_list .card .text {
+  font-size: 14px;
+
+}

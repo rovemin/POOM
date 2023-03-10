@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="POOM">
+  <title>POOM</title>
+  <link rel="stylesheet" href="{% static 'register_dog/lost.css' %}" media="screen" type="text/css"/>
+</head>
+
+<body>
+
+  <!--헤더-->
+  <div class="nav">
+    <a href="{% url 'register_dog:index' %}">
+      <img src="" title="로고자리" />
+    </a>
+    <div class="nav-items">
+      <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_lost/'">실종견 등록하기</button>
+      <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_found/'">목격/구조 제보하기</button>
+      <div class="nav-item" onclick="location.href='http://127.0.0.1:8000/'">Home</div>
+      <div class="nav-item">Login</div>
+      <div class="nav-item" onclick="location.href='./mypage.html'">마이페이지 </div>
+    </div>
+  </div>
+
+  <!--검색바-->
+  <div class="search_box">
+    <button class="sbut2">이미지 검색</button>
+    <input class="search" type="text" placeholder="실종견 검색">
+    <button class="sbut">검색</button>
+  </div>
+
+  <!--입력폼-->
+  <div class="box">실종견 제보</div>
+  <div class="background">
+<!--    여기다 폼 만들기-->
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+      <table>
+        {{ form }}
+      </table>
+      <button type="submit" class="but1">등록하기</button>
+    </form>
+  </div>
+
+</body>
+
+</html>

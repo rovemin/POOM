@@ -106,7 +106,11 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
@@ -117,6 +121,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 로그인 성공 후 이동하는 URL
-LOGIN_REDIRECT_URL = '/register_dog/'
+LOGIN_REDIRECT_URL = '/'
 # 로그아웃시 이동하는 URL
-LOGOUT_REDIRECT_URL = '/register_dog/'
+LOGOUT_REDIRECT_URL = '/'
