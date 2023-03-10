@@ -70,13 +70,13 @@
             {% if p.image1.url != None %}
               <img src="{{ p.image1.url }}" alt="{{ p }}">
             {% else %}
-              <img>
+              <img src="{% static 'logo/blank.png' %}">
             {% endif %}
           </div>
           <div class="text">
             <h3>{{ p.post_title }}</h3>
             <p>지역: {{ p.location_city }}</p>
-            <p>내용: {{ p.description | truncatewords:7 }}</p>
+            <p>내용: {{ p.description | truncatewords:3 }}</p>
           </div>
         </div>
         {% endfor %}

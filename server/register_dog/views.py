@@ -104,3 +104,6 @@ class FoundCreate(LoginRequiredMixin, CreateView):
             return super(FoundCreate, self).form_valid(form)
         else:
             return redirect('/create_post_found/')
+
+    # def get_category_initial(self):
+    #     return {'category':'제보',}
