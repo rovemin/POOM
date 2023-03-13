@@ -13,15 +13,15 @@
 
   <!--헤더-->
   <div class="nav">
-    <a href="{% url 'register_dog:index' %}">
-      <img src="" title="로고자리" />
+    <a href="{% url 'register_dog:main1' %}">
+      <img src="{% static 'logo/logo.png' %}" title="logo" />
     </a>
     <div class="nav-items">
       <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_lost/'">실종견 등록하기</button>
       <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_found/'">목격/구조 제보하기</button>
       <div class="nav-item" onclick="location.href='http://127.0.0.1:8000/'">Home</div>
       <div class="nav-item">Login</div>
-      <div class="nav-item" onclick="location.href='./mypage.html'">마이페이지 </div>
+      <div class="nav-item" onclick="location.href='http://127.0.0.1:8000/mypage/'">마이페이지 </div>
     </div>
   </div>
 

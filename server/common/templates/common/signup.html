@@ -11,15 +11,19 @@
 <body>
   <!--헤더-->
   <div class="nav">
-    <img src="" title="로고자리" />
+    <a href="{% url 'register_dog:main1' %}">
+      <img src="{% static 'logo/logo.png' %}" title="logo" />
+    </a>
     <div class="nav-items">
-      <button type="button" class="but" onclick="location.href='./lost_form.html'">실종견 등록하기</button>
-      <button type="button" class="but" onclick="location.href='./found_form.html'">목격/구조 제보하기</button>
-      <a class="nav-item" href="{% url 'register_dog:index' %}">Home</a>
+
+      {% if user.is_authenticated %}
+      <button type="button" class="but" onclick="location.href='{% url 'register_dog:create_post_lost' %}'">실종견 등록하기</button>
+      <button type="button" class="but" onclick="location.href='{% url 'register_dog:create_post_found' %}'">목격/구조 제보하기</button>
+      {% endif %}
+
+      <div class="nav-item" onclick="location.href='{% url 'register_dog:main1' %}'">Home</div>
 <!--      <div class="nav-item" onClick="location.href='common/login.html'">Login</div>-->
       <a class="nav-item" href="{% url 'common:login' %}">로그인</a>
-      <div class="nav-item" onclick="location.href='./mypage.html'">마이페이지 </div>
-
     </div>
   </div>
 

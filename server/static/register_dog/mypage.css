@@ -1,0 +1,327 @@
+/* 헤더 */
+.nav {
+  height: 80px;
+ border-bottom: 2px solid #FFDA7C;
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  margin-left: auto;
+  margin-right: 60px;
+  
+}
+
+.nav-item{
+  margin-top: auto;
+  margin-left: 20px;
+}
+
+.but {
+  margin-top: 20px;
+  text-align: center;
+  width: 150px;
+  padding: 8px;
+  border: 2px solid #FFDA7C;
+  border-radius: 20px;
+  color:solid black;
+  background: #FFDA7C;
+  margin-left: auto;
+  margin-right: 20px;
+  font-weight: bold;
+  
+}
+
+
+
+/*리스트 설명*/
+
+
+/*리스트*/
+
+.mypage{
+  margin-top:30px;
+}
+.mypagebar{
+   display: flex;
+  justify-content:center;
+   width: 880px;
+  margin:auto;
+  
+}
+.mydog{
+  display:flex;
+   justify-content: center;
+  align-items: center;
+font-size: 18px;
+  font-weight: bold;
+  width: 210px;
+  height: 40px;
+  background: #FFDA7C;
+  border: 1px solid #FFDA7C;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  margin-right:20px;
+  float: left;
+  
+}
+
+.imageresult{
+  display:flex;
+   justify-content: center;
+  align-items: center;
+font-size: 18px;
+  font-weight: bold;
+  width: 646px;
+  height: 40px;
+  background: #FFDA7C;
+  border: 1px solid #FFDA7C;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  float: left;
+}
+.searchresult{
+  display: flex;
+justify-content: left;
+  width: 880px;
+  margin:auto;
+  
+}
+
+
+.mydogcontainer{
+ 
+  width: 220px;
+height:210px;
+  float:left;
+
+
+  margin-right:20px;
+}
+
+.searchcontainer{
+  
+  max-width: 660px;
+  float:left;
+ 
+
+ 
+}
+
+.profile{
+  display: flex;
+justify-content: center;
+  align-items: center;
+ 
+}
+
+.profile .card{
+  border: 1px solid #D9D9D9;
+  height: 350px;
+  width: 200px;
+  padding: 5px;
+  margin-bottom: 15px;
+  display: flex_end;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.profile img{
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 100px;
+  border: 1px solid #D9D9D9;
+  border-radius: 50%;
+}
+
+.dog_list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+ 
+}
+.dog_list .card{
+  border: 1px solid #D9D9D9;
+  height: 350px;
+  width: 200px;
+  padding: 5px;
+  margin-bottom: 15px;
+
+}
+
+.dog_list2 .card{
+
+ border: 1px solid #D9D9D9;
+  height: 350px;
+  width: 200px;
+  padding: 5px;
+  margin-bottom: 15px;
+ 
+}
+
+
+
+.card img{
+  height: 200px;
+  width: 200px;
+}
+.card .text {
+  font-size: 14px;
+  
+}
+
+.mfbut{
+  background: #FFDA7C;
+  border: 1px solid #FFDA7C;
+  border-radius: 10px;
+}
+
+
+/*팝업*/
+.modal_wrap{
+        display: none;
+        width: 400px;
+        height: 500px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        margin: -250px 0 0 -250px;
+        background:#ffffff;
+        z-index: 2;
+    }
+    .black_bg{
+        display: none;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color:rgba(0, 0,0, 0.5);
+        top:0;
+        left: 0;
+        z-index: 1;
+    }
+    .modal_close{
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        top: -30px;
+        right: 0;
+    }
+    .modal_close> a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        background:url(https://img.icons8.com/metro/26/000000/close-window.png);
+        text-indent: -9999px;
+    }
+
+
+.modal_wrap2{
+        display: none;
+        width: 400px;
+        height: 500px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        margin: -250px 0 0 -250px;
+        background:#ffffff;
+        z-index: 2;
+    }
+    .black_bg2{
+        display: none;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color:rgba(0, 0,0, 0.5);
+        top:0;
+        left: 0;
+        z-index: 1;
+    }
+    .modal_close2{
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        top: -30px;
+        right: 0;
+    }
+    .modal_close2> a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        background:url(https://img.icons8.com/metro/26/000000/close-window.png);
+        text-indent: -9999px;
+    }
+
+.popupbar{
+  width: 400px;
+  height:50px;
+  background-color:#FFDA7C ;
+  display:flex;
+   justify-content: center;
+  align-items: center;
+font-size: 18px;
+  font-weight: bold;
+}
+
+.mpbut{
+    display:flex;
+   justify-content: center;
+  align-items: center;
+  margin-top: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.but4{
+
+  width: 150px;
+  height: 40px;
+  background-color: #FFDA7C;
+  color: white;
+font-size: 14px;
+  font-weight: bold;
+border: none;
+  border-radius: 6px;
+  margin-right: 5px;
+  margin-left: 5px;
+
+}
+
+.myimage{
+  margin-top: 10px;
+  margin-left: 10px;
+
+}
+.myimage img{
+  float: left;
+}
+.textbox{
+  float:left;
+  margin-left: 10px;
+
+}
+
+.image2{
+  display: flex;
+float:left;
+margin-left: 10px;
+  margin-top: 10px;
+  
+}
+.image2 img{
+  height: 80px;
+  width: 80px;
+  margin-right: 5px;
+
+
+}
+
+.delete{
+  text-align: center;
+  color: #444444;
+}

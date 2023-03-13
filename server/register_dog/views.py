@@ -4,7 +4,7 @@ from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
-def index(request):
+def main1(request):
     posts = Dog_post.objects.filter(category=1)
 
     return render(
@@ -15,7 +15,7 @@ def index(request):
         }
     )
 
-def index2(request):
+def main2(request):
     posts = Dog_post.objects.filter(category=2)
 
     return render(
@@ -107,3 +107,14 @@ class FoundCreate(LoginRequiredMixin, CreateView):
 
     # def get_category_initial(self):
     #     return {'category':'제보',}
+
+def mypage(request):
+    posts = Dog_post.objects.all()
+
+    return render(
+        request,
+        'register_dog/mypage.html',
+        {
+            'posts': posts,
+        }
+    )
