@@ -6,6 +6,11 @@
   align-items: center;
 }
 
+/* .nav .img {
+  height: auto;
+  width: 200px;
+} */
+
 .nav-items {
   display: flex;
   margin-left: auto;
