@@ -8,6 +8,7 @@
   <meta name="description" content="POOM">
   <title>POOM</title>
   <link href="{% static 'register_dog/main2.css' %}" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -44,7 +45,28 @@
   <!--검색바-->
 
   <div class="search_box">
-    <button class="sbut2">이미지 검색</button>
+    <div class="image_search_box">
+      <button class="sbut2" id="modal_btn3">이미지 검색</button>
+      <div class="black_bg3"></div>
+      <div class="modal_wrap3">
+        <div class="modal_close3"><a href="#">close</a></div>
+        <div class="popupbar"> 이미지로 검색하기 </div>
+        <div class="upload-form">
+          <label for="file">
+            <div class="btn-upload">파일 업로드하기</div>
+          </label>
+        </div>
+        <input type="file" name="file" id="file">
+        <div class="mpbut">
+          <button type="button" class="but4" onclick="location.href='{% url 'register_dog:imageresult' %}'">검색 시작!</button>
+        </div>
+        <div class="discr">
+          반려견의 얼굴이 잘 드러나는 사진을 업로드해주세요 <br>
+          마이페이지에서는 이미 등록된 반려견을 검색할 수 있습니다!
+        </div>
+      </div>
+    </div>
+
     <input class="search" type="text" placeholder="실종견 검색">
     <button class="sbut">검색</button>
 
@@ -83,14 +105,30 @@
       {% else %}
         <h3 class="text">아직 게시물이 없습니다.</h3>
       {% endif %}
-
-
     </div>
   </div>
 
-  <!--이미지 검색 팝업-->
-
-
 </body>
+
+<script>
+  window.onload = function () {
+
+    function onClick() {
+      document.querySelector('.modal_wrap3').style.display = 'block';
+      document.querySelector('.black_bg3').style.display = 'block';
+    }
+    function offClick() {
+      document.querySelector('.modal_wrap3').style.display = 'none';
+      document.querySelector('.black_bg3').style.display = 'none';
+    }
+
+    document.getElementById('modal_btn3').addEventListener('click', onClick);
+    document.querySelector('.modal_close3').addEventListener('click', offClick);
+
+
+
+
+  };
+</script>
 
 </html>
