@@ -118,3 +118,14 @@ def mypage(request):
             'posts': posts,
         }
     )
+
+def imageresult(request):
+    posts = Dog_post.objects.all()
+
+    return render(
+        request,
+        'register_dog/imageresult.html',
+        {
+            'posts': posts,
+        }
+    )
