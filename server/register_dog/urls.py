@@ -12,4 +12,5 @@ urlpatterns = [
     path('create_post_found/', views.FoundCreate.as_view(), name="create_post_found"),
     path('mypage/', views.mypage, name="mypage"),
     path('imageresult/', views.imageresult, name="imageresult"),
+    path('detail/<int:pk>/', views.detail, name="detail"),
 ]

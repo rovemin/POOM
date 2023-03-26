@@ -86,7 +86,7 @@
       {% if posts.exists %}
       <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
         {% for p in posts %}
-        <div class="card">
+        <div class="card" style="cursor:pointer;" onclick="location.href='/detail/{{ p.pk }}/'">
 
           <div class="image">
             {% if p.image1.url != None %}

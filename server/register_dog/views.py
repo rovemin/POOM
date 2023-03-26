@@ -129,3 +129,14 @@ def imageresult(request):
             'posts': posts,
         }
     )
+
+def detail(request, pk):
+    post = Dog_post.objects.get(pk=pk)
+
+    context = {'post': post}
+
+    return render(
+        request,
+        'register_dog/detail.html',
+        context
+     )
