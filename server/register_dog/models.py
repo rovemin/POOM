@@ -18,7 +18,7 @@ from django.db import models
 
 class Category(models.Model):
     category_choices = (('등록', '실종견 등록'), ('제보', '목격/구조 제보'))
-    category_name = models.CharField('분류*', max_length=15, unique=True, choices=category_choices)
+    category_name = models.CharField('카테고리(등록/제보)*', max_length=15, unique=True, choices=category_choices)
 
     def __str__(self):
         return self.category_name
@@ -62,7 +62,7 @@ class Dog_post(models.Model):
     image3 = models.ImageField('사진3', upload_to='register_dog/images/%Y/%m/%d/', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.dog_name} :: {self.category}'
+        return f'{self.post_title} :: {self.category}'
 
     def get_ablolute_url(self):
         return '/post/{}/'.format(self.pk)
