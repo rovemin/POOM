@@ -130,6 +130,18 @@ def imageresult(request):
         }
     )
 
+def textresult(request):
+    posts = Dog_post.objects.all()
+
+    return render(
+        request,
+        'register_dog/textresult.html',
+        {
+            'posts': posts,
+        }
+    )
+
+
 def detail(request, pk):
     post = Dog_post.objects.get(pk=pk)
 
