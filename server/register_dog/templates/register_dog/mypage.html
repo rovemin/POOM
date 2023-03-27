@@ -32,12 +32,16 @@
       <a class="nav-item" href="{% url 'common:login' %}">로그인</a>
       {% endif %}
 
-      {% if user.is_authenticated %}
+      <!-- {% if user.is_authenticated %}
       <div class="nav-item" onclick="location.href='{% url 'register_dog:mypage' %}'">마이페이지 </div>
-      {% endif %}
+      {% endif %} -->
 
       {% if not user.is_authenticated %}
       <a class="nav-item" href="{% url 'common:signup' %}">회원가입</a>
+      {% endif %}
+
+      {% if request.user == user %}
+        <a class="nav-item" href="{% url 'common:update' user.pk %}">회원정보 수정</a>
       {% endif %}
     </div>
   </div>
@@ -61,8 +65,8 @@
               <img src="" alt="">
             </div>
             <div class="text">
-              <h3>이름</h3>
-              <p>메일주소</p>
+              <h3>{{user.username}}</h3>
+              <p>{{user.email}}</p>
             </div>
           </div>
         </div>
