@@ -8,23 +8,24 @@
   <meta name="description" content="POOM">
   <title>POOM</title>
   <link href="{% static 'register_dog/main2.css' %}" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
 
   <!--헤더-->
   <div class="nav">
-    <a href="{% url 'register_dog:index' %}">
-      <img src="" title="로고자리" />
+    <a href="{% url 'register_dog:main1' %}">
+      <img src="{% static 'logo/logo2.png' %}" title="logo" />
     </a>
     <div class="nav-items">
 
       {% if user.is_authenticated %}
-      <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_lost/'">실종견 등록하기</button>
-      <button type="button" class="but" onclick="location.href='http://127.0.0.1:8000/create_post_found/'">목격/구조 제보하기</button>
+      <button type="button" class="but" onclick="location.href='{% url 'register_dog:create_post_lost' %}'">실종견 등록하기</button>
+      <button type="button" class="but" onclick="location.href='{% url 'register_dog:create_post_found' %}'">목격/구조 제보하기</button>
       {% endif %}
 
-      <div class="nav-item" onclick="location.href='http://127.0.0.1:8000/'">Home</div>
+      <div class="nav-item" onclick="location.href='{% url 'register_dog:main1' %}'">Home</div>
       {% if user.is_authenticated %}
       <a class="nav-item" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
       {% else %}
@@ -32,7 +33,7 @@
       {% endif %}
 
       {% if user.is_authenticated %}
-      <div class="nav-item" onclick="location.href='./mypage.html'">마이페이지 </div>
+      <div class="nav-item" onclick="location.href='{% url 'register_dog:mypage' %}'">마이페이지 </div>
       {% endif %}
 
       {% if not user.is_authenticated %}
@@ -44,16 +45,37 @@
   <!--검색바-->
 
   <div class="search_box">
-    <button class="sbut2">이미지 검색</button>
+    <div class="image_search_box">
+      <button class="sbut2" id="modal_btn3">이미지 검색</button>
+      <div class="black_bg3"></div>
+      <div class="modal_wrap3">
+        <div class="modal_close3"><a href="#">close</a></div>
+        <div class="popupbar"> 이미지로 검색하기 </div>
+        <div class="upload-form">
+          <label for="file">
+            <div class="btn-upload">파일 업로드하기</div>
+          </label>
+        </div>
+        <input type="file" name="file" id="file">
+        <div class="mpbut">
+          <button type="button" class="but4" onclick="location.href='{% url 'register_dog:imageresult' %}'">검색 시작!</button>
+        </div>
+        <div class="discr">
+          반려견의 얼굴이 잘 드러나는 사진을 업로드해주세요 <br>
+          마이페이지에서는 이미 등록된 반려견을 검색할 수 있습니다!
+        </div>
+      </div>
+    </div>
+
     <input class="search" type="text" placeholder="실종견 검색">
-    <button class="sbut">검색</button>
+    <button class="sbut" onclick="location.href='{% url 'register_dog:textresult' %}'">검색</button>
 
   </div>
 
   <!--리스트 설명-->
   <div class="mainlist">
-    <div class="lost_list" onclick="location.href='http://127.0.0.1:8000'"> 실종 신고 목록</div>
-    <div class="found_list" onclick="location.href='http://127.0.0.1:8000/main2/'"> 제보 목록 </div>
+    <div class="lost_list" onclick="location.href='{% url 'register_dog:main1' %}'"> 실종 신고 목록</div>
+    <div class="found_list" onclick="location.href='{% url 'register_dog:main2' %}'"> 제보 목록 </div>
   </div>
 
 
@@ -64,7 +86,7 @@
       {% if posts.exists %}
       <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
         {% for p in posts %}
-        <div class="card">
+        <div class="card" style="cursor:pointer;" onclick="location.href='/detail/{{ p.pk }}/'">
 
           <div class="image">
             {% if p.image1.url != None %}
@@ -83,14 +105,30 @@
       {% else %}
         <h3 class="text">아직 게시물이 없습니다.</h3>
       {% endif %}
-
-
     </div>
   </div>
 
-  <!--이미지 검색 팝업-->
-
-
 </body>
+
+<script>
+  window.onload = function () {
+
+    function onClick() {
+      document.querySelector('.modal_wrap3').style.display = 'block';
+      document.querySelector('.black_bg3').style.display = 'block';
+    }
+    function offClick() {
+      document.querySelector('.modal_wrap3').style.display = 'none';
+      document.querySelector('.black_bg3').style.display = 'none';
+    }
+
+    document.getElementById('modal_btn3').addEventListener('click', onClick);
+    document.querySelector('.modal_close3').addEventListener('click', offClick);
+
+
+
+
+  };
+</script>
 
 </html>
