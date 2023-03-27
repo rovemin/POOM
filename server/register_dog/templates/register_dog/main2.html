@@ -97,6 +97,7 @@
           </div>
           <div class="text">
             <h3>{{ p.post_title }}</h3>
+            <p>by {{ p.author | upper }}</p>
             <p>지역: {{ p.location_city }}</p>
             <p>내용: {{ p.description | truncatewords:3 }}</p>
           </div>

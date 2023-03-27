@@ -1,20 +1,6 @@
-# class Dog_post(models.Model):
-#     category_name = models.CharField(max_length=15)
-#     dog_name = models.CharField(max_length=15, blank=True)
-#     breed = models.CharField(max_length=40, blank=True)
-#     location_city = models.CharField(max_length=10)
-#     location_detail = models.TextField(max_length=100, blank=True)
-#     date = models.DateField()
-#     sex = models.CharField(max_length=10, blank=True)
-#     age = models.CharField(max_length=10, blank=True)
-#     reward = models.CharField(max_length=20, blank=True)
-#     description = models.TextField(max_length=300)
-#     image1 = models.FileField(upload_to='images/', blank=True)
-#     image2 = models.FileField(upload_to='images/', blank=True)
-#     image3 = models.FileField(upload_to='images/', blank=True)
-
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.shortcuts import render
 
 class Category(models.Model):
     category_choices = (('등록', '실종견 등록'), ('제보', '목격/구조 제보'))
@@ -31,6 +17,8 @@ class Dog_post(models.Model):
     post_title = models.CharField('글 제목*', max_length=100, default='')
 
     category = models.ForeignKey(Category, verbose_name='카테고리(등록/제보)*', on_delete=models.CASCADE)
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     dog_name = models.CharField('실종견 이름', max_length=15, null=True, blank=True)
     breed = models.CharField('견종', max_length=40, null=True, blank=True)
@@ -66,3 +54,4 @@ class Dog_post(models.Model):
 
     def get_ablolute_url(self):
         return '/post/{}/'.format(self.pk)
+
