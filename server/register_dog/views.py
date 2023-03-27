@@ -107,3 +107,14 @@ def detail(request, pk):
         'register_dog/detail.html',
         context
      )
+
+def mypage(request):
+    # logged_in_user = request.user
+    logged_in_user_posts = Dog_post.objects.filter(author=request.user)
+    return render(
+        request,
+        'register_dog/mypage.html',
+        {
+            'posts':logged_in_user_posts,
+        }
+    )

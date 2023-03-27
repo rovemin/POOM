@@ -76,88 +76,25 @@
 
       <div class="searchcontainer">
         <div class="dog_list">
-          <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
+          <!-- 반복문으로 게시물 -->
+          {% if posts.exists %}
+            {% for p in posts %}
           <div class="card">
 
             <div class="image">
-              <img src="" alt="">
+              <img src="{{ p.image1.url }}" alt="{{ p }}">
             </div>
             <div class="text">
-              <h3>글 제목</h3>
-              <p>지역:</p>
-              <p>견종:</p>
-
+              <h3>{{ p.post_title }}</h3>
+              <p>by {{ p.author | upper }}</p>
+              <p>지역: {{ p.location_city }}</p>
               <button class="mfbut" id="modal_btn2">자세히</button>
-              <div class="black_bg2"></div>
-              <div class="modal_wrap2">
-                <div class="modal_close2"><a href="#">close</a></div>
-                <div class="popupbar"> 내가 등록한 글 </div>
-                <div class="myimage">
-                  <img src="" alt="">
-                </div>
-                <div class="textbox">
-                  <h3>글 제목</h3>
-                  <p>지역:</p>
-                  <p>견종:</p>
-                  <p>연락처:</p>
-                  <p>성별:</p>
-
-                </div>
-                <div class="image2">
-                  <img src="" alt="">
-                  <img src="" alt="">
-                  <img src="" alt="">
-                  <img src="" alt="">
-                </div>
-
-                <div class="mpbut">
-                  <button type="button" class="but4" onclick="location.href='./searchresult.html'">이미지로 검색하기</button>
-                  <button type="button" class="but4" onclick="location.href='./textresult.html'">텍스트로 검색하기</button>
-                </div>
-                <div class="delete">
-                  <p>글 삭제하기</p>
-                  </p>
-                </div>
-              </div>
-
             </div>
-          </div>
-          <div class="card">
-
-            <div class="image">
-              <img src="" alt="">
-            </div>
-            <div class="text">
-              <h3>글 제목</h3>
-              <p>지역:</p>
-              <p>견종:</p>
-              <button type="button" class="mfbut">자세히</button>
-            </div>
-          </div>
-          <div class="card">
-
-            <div class="image">
-              <img src="" alt="">
-            </div>
-            <div class="text">
-              <h3>글 제목</h3>
-              <p>지역:</p>
-              <p>견종:</p>
-              <button type="button" class="mfbut">자세히</button>
-            </div>
-          </div>
-          <div class="card">
-
-            <div class="image">
-              <img src="" alt="">
-            </div>
-            <div class="text">
-              <h3>글 제목</h3>
-              <p>지역:</p>
-              <p>견종:</p>
-              <button type="button" class="mfbut">자세히</button>
-            </div>
-          </div>
+          </div> <!-- card 끝 -->
+            {% endfor %}
+          {% else %}
+            <h3 class="text">아직 게시물이 없습니다.</h3>
+          {% endif %}
         </div>
 
 
@@ -169,26 +106,5 @@
   </div>
 
 </body>
-
-<script>
-  window.onload = function () {
-
-    function onClick() {
-      document.querySelector('.modal_wrap2').style.display = 'block';
-      document.querySelector('.black_bg2').style.display = 'block';
-    }
-    function offClick() {
-      document.querySelector('.modal_wrap2').style.display = 'none';
-      document.querySelector('.black_bg2').style.display = 'none';
-    }
-
-    document.getElementById('modal_btn2').addEventListener('click', onClick);
-    document.querySelector('.modal_close2').addEventListener('click', offClick);
-
-
-
-
-  };
-</script>
 
 </html>

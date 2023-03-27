@@ -54,3 +54,4 @@ class Dog_post(models.Model):
 
     def get_ablolute_url(self):
         return '/post/{}/'.format(self.pk)
+

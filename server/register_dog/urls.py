@@ -14,4 +14,5 @@ urlpatterns = [
     path('imageresult/', views.imageresult, name="imageresult"),
     path('textresult/', views.textresult, name="textresult"),
     path('detail/<int:pk>/', views.detail, name="detail"),
+
 ]
