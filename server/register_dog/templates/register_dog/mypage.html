@@ -84,10 +84,10 @@
               <img src="{{ p.image1.url }}" alt="{{ p }}">
             </div>
             <div class="text">
-              <h3>{{ p.post_title }}</h3>
+              <h3>{{ p.post_title | truncatewords:3}}</h3>
               <p>by {{ p.author | upper }}</p>
               <p>지역: {{ p.location_city }}</p>
-              <button class="mfbut" id="modal_btn2">자세히</button>
+              <button class="mfbut" id="modal_btn2" onclick="location.href='/detail/{{ p.pk }}/'">자세히</button>
             </div>
           </div> <!-- card 끝 -->
             {% endfor %}
