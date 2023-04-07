@@ -78,7 +78,7 @@
           <!-- 반복문으로 게시물 -->
           {% if posts.exists %}
             {% for p in posts %}
-          <div class="card">
+          <div class="card" style="cursor:pointer;" onclick="location.href='/detail/{{ p.pk }}/'">
 
             <div class="image">
               <img src="{{ p.image1.url }}" alt="{{ p }}">
