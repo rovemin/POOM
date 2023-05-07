@@ -124,10 +124,6 @@ def textresult(request):
         'register_dog/textresult.html',
 
         {
-            'top_results': top_results,
-            'results':results,
-            'results_idx':results_idx,
-            'numbers':numbers,
 
             'print_result':print_result,
 
