@@ -1,0 +1,167 @@
+/* 헤더 */
+.nav {
+  height: 80px;
+ border-bottom: 2px solid #FFDA7C;
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  margin-left: auto;
+  margin-right: 60px;
+
+}
+
+.nav-item{
+  margin-top: auto;
+  margin-left: 20px;
+}
+
+.but {
+  margin-top: 20px;
+  text-align: center;
+  width: 150px;
+  padding: 8px;
+  border: 2px solid #FFDA7C;
+  border-radius: 20px;
+
+  background: #FFDA7C;
+  margin-left: auto;
+  margin-right: 20px;
+  font-weight: bold;
+
+}
+
+
+.box {
+
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+justify-content: center;
+  align-items: center;
+font-size: 18px;
+  font-weight: bold;
+  width: 880px;
+  height: 40px;
+  background: #FFDA7C;
+  border: 2px solid #FFDA7C;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+
+}
+.background{
+    background-color: white;
+  border:2px solid #D9D9D9 ;
+  width: 880px;
+  height: 860px;
+  margin:auto;
+}
+.details {
+margin-top:10px;
+  display: flex;
+justify-content: left;
+  align-items: left;
+  margin-left:105px;
+
+}
+.detailimg1 {
+float: left;
+margin-top: 10px;
+
+}
+.detailimg2 {
+float: left;
+margin-top: 10px;
+margin-left: 20px;
+}
+.detailimg3 {
+float: left;
+margin-top: 10px;
+margin-left: 20px;
+}
+
+.detailbox{
+margin: auto;
+  display: flex;
+justify-content: center;
+  align-items: center;
+
+}
+
+.detailbox p{line-height: 15px;}
+
+.detailtable {
+  border-spacing: 5px;
+width: 680px;
+border: 2px solid #none;
+
+  border-radius: 5px;
+  }
+  .detailtable th{
+   border-radius: 5px;
+     width: 100px;
+ padding: 7px;
+    border: 2px solid #FFDA7C;
+    background: #FFDA7C;
+
+  }
+.detailtable td{
+text-align:center;
+ border-radius: 5px;
+ padding: 7px;
+    border: 2px solid #FFDA7C;
+    font-size:14px;
+  }
+
+
+.detailimg1 img {
+height:210px;
+width: 210px;
+}
+.detailimg2 img {
+height:210px;
+width: 210px;
+}
+.detailimg3 img {
+height:210px;
+width: 210px;
+}
+
+.detailbut{
+margin: auto;
+  display: flex;
+justify-content: center;
+  align-items: center;
+
+}
+
+.btn-image{
+margin-top:20px;
+  text-align: center;
+  width: 250px;
+  padding: 8px;
+  border: 2px solid #FFDA7C;
+  border-radius: 10px;
+  color:solid black;
+  background: #FFDA7C;
+margin-right:60px;
+font-size:16px;
+  font-weight: bold;
+}
+
+.btn-text{
+margin-top:20px;
+  text-align: center;
+  width: 250px;
+  padding: 8px;
+  border: 2px solid #FFDA7C;
+  border-radius: 10px;
+  color:solid black;
+  background: #FFDA7C;
+
+font-size:16px;
+  font-weight: bold;
+}

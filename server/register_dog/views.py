@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Dog_post, Category
 from django.views.generic import CreateView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from sentence_transformers import SentenceTransformer, util
+import torch
 
 
 def main1(request):
@@ -85,17 +87,48 @@ def imageresult(request):
         }
     )
 
+
+model = SentenceTransformer("Huffon/sentence-klue-roberta-base")
 def textresult(request):
-    posts = Dog_post.objects.all()
+    docs = list(Dog_post.objects.values('description'))
+    document_embeddings = model.encode(docs)
+
+    query = request.POST['text_search']
+    query_embedding = model.encode(query)
+
+    top_k = min(5, len(docs))
+
+    # 입력 문장 - 문장 후보군 간 코사인 유사도 계산
+    cos_scores = util.pytorch_cos_sim(query_embedding, document_embeddings)[0]
+    # 코사인 유사도 순으로 'top_k' 개 문장 추출
+    top_results = torch.topk(cos_scores, k=top_k)
+    results = []
+    results_idx = []
+
+    numbers = []
+
+    # result = enumerate(zip(top_results[0], top_results[1]))
+    for i, (score, idx) in enumerate(zip(top_results[0], top_results[1])):
+        result = docs[idx]
+
+        results_idx.append(idx.item()+1)
+        results.append(result['description'])
+
+    print_result = list(zip(results_idx, results))
+
+    for i in range(top_k):
+        numbers.append(i)
 
     return render(
         request,
         'register_dog/textresult.html',
+
         {
-            'posts': posts,
+
+            'print_result':print_result,
+
         }
     )
-
 
 def detail(request, pk):
     post = Dog_post.objects.get(pk=pk)

@@ -10,7 +10,7 @@
   display: flex;
   margin-left: auto;
   margin-right: 60px;
-  
+
 }
 
 .nav-item{
@@ -30,7 +30,7 @@
   margin-left: auto;
   margin-right: 20px;
   font-weight: bold;
-  
+
 }
 
 
@@ -62,7 +62,7 @@ justify-content: center;
  align-items: center;
   margin-top:5px;
    margin-bottom: 5px;
-  
+
 }
 
 .search {
@@ -82,9 +82,9 @@ border-bottom-left-radius: 10px;
 
 }
   input{
-    
+
   outline: none;
-  
+
   }
 
 textarea{
@@ -116,26 +116,11 @@ border-bottom-right-radius: 10px;
 .resultbar{
    display: flex;
   justify-content:center;
-   width: 880px;
+   width: 646px;
   margin:auto;
-  
+
 }
-.mydog{
-  display:flex;
-   justify-content: center;
-  align-items: center;
-font-size: 18px;
-  font-weight: bold;
-  width: 210px;
-  height: 40px;
-  background: #FFDA7C;
-  border: 1px solid #FFDA7C;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  margin-right:20px;
-  float: left;
-  
-}
+
 
 .imageresult{
   display:flex;
@@ -149,70 +134,34 @@ font-size: 18px;
   border: 1px solid #FFDA7C;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  float: left;
-}
-.searchresult{
-  display: flex;
-justify-content: left;
-  width: 880px;
-  margin:auto;
-  
+
+
 }
 
 
-.mydogcontainer{
- 
-  width: 220px;
-height:210px;
-  float:left;
-
-
-  margin-right:20px;
-}
 
 .searchcontainer{
-  
-  max-width: 660px;
-  float:left;
- 
+  display: flex;
+  width: 646px;
+  margin:auto;
 
- 
 }
 
 .dog_list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
- 
+
+  flex-direction:column;
 }
 .dog_list .card{
   border: 1px solid #D9D9D9;
-  height: 350px;
-  width: 200px;
-  padding: 5px;
-  margin-bottom: 15px;
+  height: 100px;
+  width: 646px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+font-size: 14px;
 
 }
-
-.dog_list2 .card{
-
- border: 1px solid #D9D9D9;
-  height: 350px;
-  width: 200px;
-  padding: 5px;
-  margin-bottom: 15px;
- 
-}
-
-
-
-.card img{
-  height: 200px;
-  width: 200px;
-}
-.card .text {
-  font-size: 14px;
-  
+.card .text{
+margin-left: 10px;
 }
 
 

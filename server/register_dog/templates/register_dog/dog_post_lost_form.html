@@ -23,7 +23,6 @@
       <button type="button" class="but" onclick="location.href='{% url 'register_dog:create_post_found' %}'">목격/구조 제보하기</button>
       {% endif %}
 
-      <div class="nav-item" onclick="location.href='{% url 'register_dog:main1' %}'">Home</div>
       {% if user.is_authenticated %}
       <a class="nav-item" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
       {% else %}
@@ -40,19 +39,12 @@
     </div>
   </div>
 
-  <!--검색바-->
-  <div class="search_box">
-    <button class="sbut2">이미지 검색</button>
-    <input class="search" type="text" placeholder="실종견 검색">
-    <button class="sbut">검색</button>
-  </div>
-
   <!--입력폼-->
   <div class="box">실종견 등록</div>
   <div class="background">
 <!--    여기다 폼 만들기-->
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
-      <table>
+      <table class="table1">
         {{ form }}
       </table>
       <button type="submit" class="but1">등록하기</button>
