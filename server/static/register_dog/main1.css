@@ -33,14 +33,13 @@
 
 }
 
-
 /*검색창*/
 .sbut2 {
    display: flex;
 justify-content: center;
  align-items: center;
-  margin-top: 30px;
-   margin-bottom: 30px;
+  margin-top: 15px;
+   margin-bottom: 15px;
   text-align: center;
   width: 186px;
   height: 40px;
@@ -60,25 +59,25 @@ justify-content: center;
   display: flex;
 justify-content: center;
  align-items: center;
-  margin-top: 10px;
-   margin-bottom: 10px;
+  margin-top: 30px;
+   margin-bottom: 30px;
 
 }
 
 .search {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 15px;
-    height: 34px;
-    width: 558px;
-    border: 2px solid #D9D9D9;
-    background: #ffffff;
+justify-content: center;
+ align-items: center;
+  margin-top: 15px;
+   margin-bottom: 15px;
+ text-align: center;
+  font-size: 15px;
+  height: 34px;
+  width: 618px;
+  border: 2px solid #D9D9D9;
+  background: #ffffff;
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+border-bottom-left-radius: 10px;
 
 }
   input{
@@ -106,6 +105,7 @@ textarea{
   font-size: 15px;
   font-weight: bold;
 }
+
 
 
 

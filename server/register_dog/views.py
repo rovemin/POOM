@@ -96,7 +96,7 @@ def textresult(request):
     query = request.POST['text_search']
     query_embedding = model.encode(query)
 
-    top_k = min(4, len(docs))
+    top_k = min(5, len(docs))
 
     # 입력 문장 - 문장 후보군 간 코사인 유사도 계산
     cos_scores = util.pytorch_cos_sim(query_embedding, document_embeddings)[0]

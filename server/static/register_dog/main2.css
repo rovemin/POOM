@@ -39,8 +39,8 @@
    display: flex;
 justify-content: center;
  align-items: center;
-  margin-top: 30px;
-   margin-bottom: 30px;
+  margin-top: 15px;
+   margin-bottom: 15px;
   text-align: center;
   width: 186px;
   height: 40px;
@@ -69,8 +69,8 @@ justify-content: center;
     display: flex;
 justify-content: center;
  align-items: center;
-  margin-top: 30px;
-   margin-bottom: 30px;
+  margin-top: 15px;
+   margin-bottom: 15px;
  text-align: center;
   font-size: 15px;
   height: 34px;
@@ -98,7 +98,7 @@ textarea{
   height: 40px;
   border: 2px solid #FFDA7C;
   border-top-right-radius: 10px;
-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   background: #FFDA7C;
   outline: none;
   float: right;
@@ -112,18 +112,18 @@ border-bottom-right-radius: 10px;
 /*리스트 설명*/
 
 .mainlist{
-    display: flex;
-  justify-content: center;
- align-items: center;
-  margin: auto;
-    font-size: 18px;
-  font-weight: bold;
-  color:black;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+   font-size: 18px;
+   font-weight: bold;
+   color:black;
 }
 .found_list {
   display: flex;
   justify-content: center;
- align-items: center;
+  align-items: center;
   text-align: ceneter;
   width: 440px;
   background-color: #FFDA7C;
@@ -132,15 +132,15 @@ border-bottom-right-radius: 10px;
   float:left;
 }
 .lost_list {
-    display: flex;
+  display: flex;
   justify-content: center;
- align-items: center;
+  align-items: center;
   text-align: ceneter;
   width: 440px;
   background-color: white;
   border: 1px solid #D9D9D9;
   height: 45px;
- float:left;
+  float:left;
 }
 
 /*리스트*/
@@ -185,3 +185,114 @@ border-bottom-right-radius: 10px;
 
 }
 
+/*팝업*/
+.modal_wrap{
+        display: none;
+        width: 400px;
+        height: 500px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        margin: -250px 0 0 -250px;
+        background:#ffffff;
+        z-index: 2;
+    }
+    .black_bg{
+        display: none;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color:rgba(0, 0,0, 0.5);
+        top:0;
+        left: 0;
+        z-index: 1;
+    }
+    .modal_close{
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        top: -30px;
+        right: 0;
+    }
+    .modal_close> a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        background:url(https://img.icons8.com/metro/26/000000/close-window.png);
+        text-indent: -9999px;
+    }
+
+.popupbar{
+  width: 400px;
+  height:50px;
+  background-color:#FFDA7C ;
+  display:flex;
+   justify-content: center;
+  align-items: center;
+font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-upload {
+  width: 150px;
+  height: 30px;
+  background: #FFDA7C;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: rgb(77,77,77);
+    color: #FFDA7C;
+  }
+}
+
+#file {
+  display: none;
+}
+
+.upload-form {
+
+    width: 350px;
+  height: 300px;
+    background-color: #EEEFF1;
+  margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  display: flex;
+align-items: center;
+  justify-content: center;
+
+    border: none;
+}
+.but4{
+  width: 350px;
+  height: 40px;
+    background-color: #FFDA7C;
+  margin-top: 15px;
+  margin-right: auto;
+    margin-left: auto;
+  display: flex;
+align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  font-weight:700;
+}
+
+.discr{
+  margin-top: 10px;
+   display: flex;
+   justify-content: center;
+  align-items:center;
+text-align: center;
+  color: #444444;
+  font-size: 12px;
+  font-weight:500;
+}
