@@ -1,65 +1,86 @@
 <!DOCTYPE html>
-
+{% load static %}
 <html>
 
 <head>
-
+  <meta charset="utf-8">
+  <meta name="description" content="POOM">
+  <title>POOM</title>
+  <link href="{% static 'register_dog/detail.css' %}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+  <!--헤더-->
+  <div class="nav">
+    <img src="" title="로고자리" />
+    <div class="nav-items">
+      <button type="button" class="but" onclick="location.href='./lost_form.html'">실종견 등록하기</button>
+      <button type="button" class="but" onclick="location.href='./found_form.html'">목격/구조 제보하기</button>
+      <div class="nav-item" onclick="location.href='./main1.html'">Home</div>
+      <div class="nav-item" onclick="location.href='./login.html'">Login</div>
+      <div class="nav-item" onclick="location.href='./mypage.html'">마이페이지 </div>
 
-    <!-- 실종견 등록 및 제보 내용 불러오기 -->
-    <div>
-        <p>글 제목: {{ post.post_title }}</p>
+    </div>
+  </div>
 
-        <p>카테고리: 실종견 {{ post.category }}</p>
+  <!-- 실종견 등록 및 제보 내용 불러오기 -->
+  <div class="box">글 내용 보기</div>
+  <div class="background">
+    <div class="detail">
+      <p>글 제목: {{ post.post_title }}</p>
 
-        {% if post.dog_name %}
-            <p>실종견 이름: {{ post.dog_name }}</p>
-        {% endif %}
+      <p>카테고리: 실종견 {{ post.category }}</p>
 
-        {% if post.breed%}
-            <p>견종: {{ post.breed }}</p>
-        {% endif %}
+      {% if post.dog_name %}
+      <p>실종견 이름: {{ post.dog_name }}</p>
+      {% endif %}
 
-        <p>위치(시/도): {{ post.location_city }}</p>
+      {% if post.breed%}
+      <p>견종: {{ post.breed }}</p>
+      {% endif %}
 
-        {% if post.location_detail %}
-            <p>위치(구체적인 장소): {{ post.location_detail }}</p>
-        {% endif %}
+      <p>위치(시/도): {{ post.location_city }}</p>
 
-        <p>날짜: {{ post.date }}</p>
+      {% if post.location_detail %}
+      <p>위치(구체적인 장소): {{ post.location_detail }}</p>
+      {% endif %}
 
-        {% if post.sex%}
-            <p>성별: {{ post.sex }}</p>
-        {% endif %}
+      <p>날짜: {{ post.date }}</p>
 
-        {% if post.age %}
-            <p>나이: {{ post.age }}</p>
-        {% endif %}
+      {% if post.sex%}
+      <p>성별: {{ post.sex }}</p>
+      {% endif %}
 
-        {% if post.reward %}
-            <p>사례금: {{ post.reward }}</p>
-        {% endif %}
+      {% if post.age %}
+      <p>나이: {{ post.age }}</p>
+      {% endif %}
 
-        <p>기타 특징: {{ post.description }}</p>
+      {% if post.reward %}
+      <p>사례금: {{ post.reward }}</p>
+      {% endif %}
 
-        {% if post.image1 %}
-            <p>사진1: <img src="{{ post.image1.url }}"></p>
-        {% endif %}
+      <p>기타 특징: {{ post.description }}</p>
 
-        {% if post.image2 %}
-            <p>사진2: <img src="{{ post.image2.url }}"></p>
-        {% endif %}
+      {% if post.image1 %}
+      <p>사진1: <img src="{{ post.image1.url }}"></p>
+      {% endif %}
 
-        {% if post.image3 %}
-            <p>사진3: <img src="{{ post.image3.url }}"></p>
-        {% endif %}
+      {% if post.image2 %}
+      <p>사진2: <img src="{{ post.image2.url }}"></p>
+      {% endif %}
+
+      {% if post.image3 %}
+      <p>사진3: <img src="{{ post.image3.url }}"></p>
+      {% endif %}
+
+      <button type="button" class="btn-image" onclick="location.href='{% url 'register_dog:imageresult' %}'">이미지
+        검색</button>
+      <button type="button" class="btn-text" onclick="location.href='{% url 'register_dog:textresult' %}'">텍스트
+        검색</button>
     </div>
 
-    <button type="button" class="btn-image" onclick="location.href='{% url 'register_dog:imageresult' %}'">이미지 검색</button>
-    <button type="button" class="btn-text" onclick="location.href='{% url 'register_dog:textresult' %}'">텍스트 검색</button>
 
+  </div>
 </body>
 
 </html>

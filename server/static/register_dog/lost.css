@@ -122,9 +122,9 @@ justify-content: center;
   margin-top: 30px;
   margin: auto;
   display: flex;
-justify-content: center;
+  justify-content: center;
   align-items: center;
-font-size: 18px;
+  font-size: 18px;
   font-weight: bold;
   width: 880px;
   height: 40px;
@@ -136,17 +136,17 @@ font-size: 18px;
 }
 .main1 {
 
-float:left;
+  float:left;
 
   margin-right: 60px;
   line-height: 35px;
 }
 
 .main2 {
-float: left;
+  float: left;
 
-margin-bottom: 10px;
-   line-height: 35px;
+  margin-bottom: 10px;
+  line-height: 35px;
 
 }
 
@@ -166,6 +166,7 @@ margin-bottom: 10px;
 
 .table1
 {
-    #margin: auto;
-    margin-left: 10px;
+    margin: auto;
+    margin-left: 50px;
+    margin-top:50px;
 }
