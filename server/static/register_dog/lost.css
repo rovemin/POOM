@@ -33,67 +33,7 @@
 
 }
 
-/*검색창*/
 
-.search_box {
-  display: flex;
-justify-content: center;
- align-items: center;
-  margin-top: 30px;
-   margin-bottom: 30px;
-}
-
-.search {
- text-align: center;
-  font-size: 15px;
-  height: 34px;
-  width: 618px;
-  border: 2px solid #D9D9D9;
-  background: #ffffff;
-    border-top-left-radius: 10px;
-border-bottom-left-radius: 10px;
-}
-  input{
-
-  outline: none;
-
-  }
-
-textarea{
-  resize: none;
-}
-
-.sbut {
-
-  text-align: center;
-  width: 60px;
-  height: 40px;
-  border: 2px solid #FFDA7C;
-  border-top-right-radius: 10px;
-border-bottom-right-radius: 10px;
-  background: #FFDA7C;
-  outline: none;
-  float: right;
-  color:black;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.sbut2 {
-  text-align: center;
-  width: 186px;
-  height: 40px;
-  border: 2px solid #FFDA7C;
-  border-radius: 10px;
-  background: #FFDA7C;
-  outline: none;
-  float: right;
-  color:black;
-  margin-right: 15px;
-  font-size: 15px;
-  font-weight: bold;
-
-}
 
 /*입력폼*/
 
@@ -119,8 +59,9 @@ justify-content: center;
 
 .box {
 
-  margin-top: 30px;
-  margin: auto;
+  margin-top:30px;
+  margin-left:auto;
+  margin-right:auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,7 +101,9 @@ justify-content: center;
   border: 2px solid #FFDA7C;
   border-radius: 10px;
   background: #FFDA7C;
-  margin: auto;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top:30px;
     display: block;
 }
 
@@ -169,4 +112,16 @@ justify-content: center;
     margin: auto;
     margin-left: 50px;
     margin-top:50px;
+}
+
+.updateform{
+ display: flex;
+justify-content: center;
+ align-items: left;
+  text-align: left;
+  color: black;
+  font-weight: normal;
+  margin-top:60px;
+  margin-bottom:40px;
+margin-left:100px;
 }
