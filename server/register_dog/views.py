@@ -5,7 +5,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from sentence_transformers import SentenceTransformer, util
 import torch
 
-
 def main1(request):
     posts = Dog_post.objects.filter(category=1)
 
@@ -129,6 +128,20 @@ def textresult(request):
 
         }
     )
+'''
+def imageresult(request):
+
+    print_result = clustering.py
+
+    return render(
+        request,
+        'register_dog/imageresult.html',
+
+        {
+            'print_result':print_result,
+        }
+    )
+'''
 
 def detail(request, pk):
     post = Dog_post.objects.get(pk=pk)

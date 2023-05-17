@@ -14,5 +14,6 @@ urlpatterns = [
     path('imageresult/', views.imageresult, name="imageresult"),
     path('textresult/', views.textresult, name="textresult"),
     path('detail/<int:pk>/', views.detail, name="detail"),
-
 ]
+
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
