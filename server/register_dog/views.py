@@ -5,11 +5,17 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Dog_post, Category
+
+from .forms import UploadedImageForm
+#from . import clustering
+from .models import Dog_post, Category, Uploaded_Image
+from . import forms
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from sentence_transformers import SentenceTransformer, util
 import torch
+
+import matplotlib.pyplot as plt
 
 def main1(request):
     posts = Dog_post.objects.filter(category=1)
@@ -125,16 +131,75 @@ def mypage(request):
         }
     )
 
-def imageresult(request):
-    posts = Dog_post.objects.all()
 
-    return render(
-        request,
-        'register_dog/imageresult.html',
-        {
-            'posts': posts,
-        }
-    )
+# def uploaded_image(request):
+#     if (request.method == 'POST'):
+#         uploaded_image_model = Uploaded_Image()
+#         uploaded_image_model.uploaded_image = request.FILES.get('image_upload')
+#         uploaded_image_model.save()
+#         return redirect('/imageresult/')
+#     else:
+#         return render(
+#             request,
+#             'register_dog/imageresult.html'
+#         )
+
+def imageresult(request):
+
+    if (request.method == 'POST'):
+        uploaded_image_model = Uploaded_Image()
+        uploaded_image_model.uploaded_image = request.FILES.get('image_upload')
+        uploaded_image_model.save()
+
+
+
+
+
+        return redirect('/imageresult/')
+
+    else:
+        return render(
+            request,
+            'register_dog/imageresult.html'
+        )
+
+
+
+
+
+    # image_upload(request.POST['image_upload'])
+    #
+    # images_cluster = Dog_post.objects.all()
+    # return render(
+    #     request,
+    #     'register_dog/imageresult.html',
+    #     {
+    #         'images_cluster':images_cluster
+    #     }
+    # )
+
+# def imageresult(request):
+#     images_cluster = clustering
+#
+#     for i in range(len(images_cluster)):
+#         length = len(images_cluster[i])
+#         if length > 0:
+#             # print(labels_cluster[i])
+#             fig = plt.figure(figsize=(length * 2, 2))
+#             for j in range(length):
+#                 plt.subplot(1, length, j + 1)
+#                 plt.imshow(images_cluster[i][j])
+#                 plt.xticks([])
+#                 plt.yticks([])
+#             plt.show()
+#
+#     return render(
+#         request,
+#         'register_dog/imageresult.html',
+#         {
+#             'images_cluster':images_cluster
+#         }
+#     )
 
 model = SentenceTransformer("Huffon/sentence-klue-roberta-base")
 def textresult(request):
@@ -177,20 +242,6 @@ def textresult(request):
 
         }
     )
-'''
-def imageresult(request):
-
-    print_result = clustering.py
-
-    return render(
-        request,
-        'register_dog/imageresult.html',
-
-        {
-            'print_result':print_result,
-        }
-    )
-'''
 
 def detail(request, pk):
     post = Dog_post.objects.get(pk=pk)

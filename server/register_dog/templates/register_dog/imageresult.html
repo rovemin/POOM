@@ -46,90 +46,37 @@
 
   <div class="search_box">
     <button class="sbut2">이미지 검색</button>
-    <input class="search" type="text" placeholder="실종견 검색">
-    <button class="sbut">검색</button>
+
+    <form  action="{% url 'register_dog:imageresult' %}" method="POST">
+      {% csrf_token %}
+      <input name="text_search" class="search" type="text" placeholder="실종견 검색">
+
+    </form>
+    <button class="sbut" type="submit">검색</button>
 
   </div>
 
   <!--검색결과창-->
   <div class="resultbar">
-    <div class="mydog"> 내 반려견 </div>
+
     <div class="imageresult"> 이미지 검색 결과 </div>
   </div>
-  <div class="searchresult">
-
-    <!--내 반려견-->
-
-    <div class="mydogcontainer">
-      <div class="dog_list2">
-        <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!--리스트-->
 
     <div class="searchcontainer">
       <div class="dog_list">
-        <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
+      <!--  검색결과 출력    -->
+          {% for i in images_cluster %}
+          <div class="card" style="cursor:pointer;" onclick="location.href='/detail/<int:pk>/'">
           <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
+            <h3>검색 결과</h3>
+            <p> plt.show() </p>
           </div>
-        </div>
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
           </div>
-          <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-          </div>
-        </div>
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
-          <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-          </div>
-        </div>
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
-          <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-          </div>
-        </div>
-
+          {% endfor %}
       </div>
-
-
     </div>
-
-
-    <!--이미지 검색 팝업-->
-
 
 </body>
 

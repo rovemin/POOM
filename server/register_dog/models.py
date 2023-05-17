@@ -53,3 +53,7 @@ class Dog_post(models.Model):
 
     def get_ablolute_url(self):
         return '/post/{}/'.format(self.pk)
+
+class Uploaded_Image(models.Model):
+    uploaded_image = models.ImageField(upload_to='images/0000', null=True, blank=True)
+
