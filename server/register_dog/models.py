@@ -1,9 +1,6 @@
 import datetime
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.files import File
-from PIL import Image
-import os
 
 class Category(models.Model):
     category_choices = (('등록', '실종견 등록'), ('제보', '목격/구조 제보'))
@@ -14,10 +11,6 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-
-
-#def get_image_path(instance, filename):
-#    return f'../media/images/{instance.pk}/{filename}'
 
 class Dog_post(models.Model):
     post_title = models.CharField('글 제목*', max_length=100, default='')
@@ -51,16 +44,12 @@ class Dog_post(models.Model):
 
     description = models.CharField('기타 특징*', max_length=300, default='')
 
-    image1 = models.ImageField('사진1', upload_to='images/', null=True, blank=True)
-    image2 = models.ImageField('사진2', upload_to='images/', null=True, blank=True)
-    image3 = models.ImageField('사진3', upload_to='images/', null=True, blank=True)
+    image1 = models.ImageField('사진1', null=True, blank=True)
+    image2 = models.ImageField('사진2', null=True, blank=True)
+    image3 = models.ImageField('사진3', null=True, blank=True)
 
     def __str__(self):
         return f'{self.post_title} :: {self.category}'
 
     def get_ablolute_url(self):
         return '/post/{}/'.format(self.pk)
-
-
-
-
