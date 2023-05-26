@@ -58,16 +58,18 @@ justify-content: center;
 .search_box {
   display: flex;
 justify-content: center;
- align-items: center;
-  margin-top: 30px;
-   margin-bottom: 30px;
+ align-items: left;
+  margin-top: 15px;
+   margin-bottom: 15px;
 
 }
 
 .search {
+   float:left;
+
     display: flex;
-justify-content: center;
- align-items: center;
+justify-content: left;
+ align-items: left;
   margin-top: 15px;
    margin-bottom: 15px;
  text-align: center;
@@ -100,13 +102,12 @@ textarea{
   border-bottom-right-radius: 10px;
   background: #FFDA7C;
   outline: none;
+  margin-top:15px;
   float: right;
   color:black;
   font-size: 15px;
   font-weight: bold;
 }
-
-
 
 
 /*리스트 설명*/
@@ -187,6 +188,8 @@ textarea{
 
 
 
+
+
 /*팝업*/
 .modal_wrap{
         display: none;
@@ -236,26 +239,7 @@ font-size: 18px;
   font-weight: bold;
 }
 
-.btn-upload {
-  width: 150px;
-  height: 30px;
-  background: #FFDA7C;
-  border: none;
-  border-radius: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    background: rgb(77,77,77);
-    color: #FFDA7C;
-  }
-}
 
-#file {
-  display: none;
-}
 
 .upload-form {
 

@@ -65,17 +65,30 @@
     <!--리스트-->
 
     <div class="searchcontainer">
+<!--      <div class="dog_list">-->
+<!--      &lt;!&ndash;  검색결과 출력    &ndash;&gt;-->
+<!--          {% for i in images_cluster %}-->
+<!--          <div class="card" style="cursor:pointer;" onclick="location.href='/detail/<int:pk>/'">-->
+<!--          <div class="text">-->
+<!--            <h3>검색 결과</h3>-->
+<!--            <p> plt.show() </p>-->
+<!--          </div>-->
+<!--          </div>-->
+<!--          {% endfor %}-->
+<!--      </div>-->
       <div class="dog_list">
-      <!--  검색결과 출력    -->
-          {% for i in images_cluster %}
-          <div class="card" style="cursor:pointer;" onclick="location.href='/detail/<int:pk>/'">
-          <div class="text">
-            <h3>검색 결과</h3>
-            <p> plt.show() </p>
-          </div>
-          </div>
-          {% endfor %}
+<!--        {% for file in filenames %}-->
+<!--            <p>{{ file }}</p>-->
+<!--            <img src="{{ file }}">-->
+<!--        {% endfor %}-->
+
+        {% for i in clustering_num %}
+            <p>{{ i }}</p>
+            <img src="{{ i }}">
+        {% endfor %}
+
       </div>
+
     </div>
 
 </body>

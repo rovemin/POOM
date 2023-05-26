@@ -1,6 +1,16 @@
 import os
+import numpy as np
+import skimage as sk
+import matplotlib.pyplot as plt
+import matplotlib.image as img
+from tqdm import tqdm_notebook
 
 import requests
+import cv2
+from sklearn.cluster import KMeans
+import tensorflow as tf
+import keras
+import keras.backend as K
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -9,13 +19,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UploadedImageForm
 #from . import clustering
 from .models import Dog_post, Category, Uploaded_Image
-from . import forms
+#from .server.register_dog import forms
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from sentence_transformers import SentenceTransformer, util
 import torch
 
-import matplotlib.pyplot as plt
 
 def main1(request):
     posts = Dog_post.objects.filter(category=1)
@@ -102,23 +111,6 @@ def update_image_path(sender, instance, created, **kwargs):
 
         instance.save()
 
-    # # 이전 이미지 파일 삭제
-    # if instance.pk and created:
-    #     old_instance = Dog_post.objects.get(pk=instance.pk)
-    #     if old_instance.image1 != instance.image1:
-    #         old_image1_path = os.path.join(settings.MEDIA_ROOT, old_instance.image1.name)
-    #         if os.path.isfile(old_image1_path):
-    #             os.remove(old_image1_path)
-    #
-    #     if old_instance.image2 != instance.image2:
-    #         old_image2_path = os.path.join(settings.MEDIA_ROOT, old_instance.image2.name)
-    #         if os.path.isfile(old_image2_path):
-    #             os.remove(old_image2_path)
-    #
-    #     if old_instance.image3 != instance.image3:
-    #         old_image3_path = os.path.join(settings.MEDIA_ROOT, old_instance.image3.name)
-    #         if os.path.isfile(old_image3_path):
-    #             os.remove(old_image3_path)
 
 def mypage(request):
     posts = Dog_post.objects.all()
@@ -131,83 +123,146 @@ def mypage(request):
         }
     )
 
+# Loss definition
+alpha = 0.3
+def triplet(y_true, y_pred):
+    a = y_pred[0::3]
+    p = y_pred[1::3]
+    n = y_pred[2::3]
 
-# def uploaded_image(request):
-#     if (request.method == 'POST'):
-#         uploaded_image_model = Uploaded_Image()
-#         uploaded_image_model.uploaded_image = request.FILES.get('image_upload')
-#         uploaded_image_model.save()
-#         return redirect('/imageresult/')
-#     else:
-#         return render(
-#             request,
-#             'register_dog/imageresult.html'
-#         )
+    ap = K.sum(K.square(a-p), -1)
+    an = K.sum(K.square(a-n), -1)
+
+    return K.sum(tf.nn.relu(ap-an+alpha))
+# Metric definition
+def triplet_acc(y_true, y_pred):
+    a = y_pred[0::3]
+    p = y_pred[1::3]
+    n = y_pred[2::3]
+
+    ap = K.sum(K.square(a - p), -1)
+    an = K.sum(K.square(a - n), -1)
+
+    return K.less(ap+alpha, an)
+
 
 def imageresult(request):
-
     if (request.method == 'POST'):
         uploaded_image_model = Uploaded_Image()
         uploaded_image_model.uploaded_image = request.FILES.get('image_upload')
         uploaded_image_model.save()
 
+    PATH = 'C:\\rovemin\\POOM\\server\\media\\images'
+    filenames = []
+    labels = []
+    idx = 0
+    SIZE = (224,224,3)
+
+    for path, dirs, files in os.walk(PATH):
+        if len(files) > 0:
+            if len(files) > 0:
+                for file in files:
+                    file_path = os.path.join(path, file)
+                    filenames.append(file_path)
+            labels = np.append(labels, np.ones(len(files))*idx)
+            idx += 1
+
+    h, w, c = SIZE
+    images = np.empty((len(filenames), h, w, c))
+    for i, f in enumerate(filenames):
+        images[i] = sk.io.imread(f)
+
+    # Normalization
+    images /= 255.0
+
+    # 게시물 폴더 개수
+    nbof_classes = len(np.unique(labels))
+
+    # loss definition
+    alpha = 0.3
+
+    def triplet(y_true, y_pred):
+
+        a = y_pred[0::3]
+        p = y_pred[1::3]
+        n = y_pred[2::3]
+
+        ap = K.sum(K.square(a - p), -1)
+        an = K.sum(K.square(a - n), -1)
+
+        return K.sum(tf.nn.relu(ap - an + alpha))
+
+    # metric definition
+    def triplet_acc(y_true, y_pred):
+        a = y_pred[0::3]
+        p = y_pred[1::3]
+        n = y_pred[2::3]
+
+        ap = K.sum(K.square(a - p), -1)
+        an = K.sum(K.square(a - n), -1)
+
+        return K.less(ap + alpha, an)
+
+    # 모델 정의
+    model = tf.keras.models.load_model('C:\\rovemin\\POOM\\server\\model\\2023.04.30.dogfacenet.146.h5',
+                                       custom_objects={'triplet': triplet, 'triplet_acc': triplet_acc})
+
+    mod = tf.keras.Model(model.layers[0].input, model.layers[-1].output)
+    predict = mod.predict(images)
+    kmeans = KMeans(n_clusters=len(np.unique(labels)), max_iter=2000, random_state=0, tol=0.2).fit(predict)
+
+    images_cluster = [images[np.equal(kmeans.labels_, i)] for i in range(len(labels))]
+    labels_cluster = [labels[np.equal(kmeans.labels_, i)] for i in range(len(labels))]
+
+    # 임시로 input 이미지 지정해서 시험해보기
+    input_image = 'POOM/server/media/images/0000/img1.jpg'
+    input_image_split = input_image.split('/')
+    input_image_folder = int(input_image_split[4])
+
+    clustering_num = []
+
+    for i in range(len(labels_cluster)):
+        if input_image_folder in labels_cluster[i]:
+            clustering_num.append(i)
+
+
+    # for i in range(len(clustering_num)):
+    #     length = len(images_cluster[clustering_num[i]])
+    #     if length > 0:
+    #         print(labels_cluster[clustering_num[i]])
+    #         fig = plt.figure(figsize=(length * 2, 2))
+    #         for j in range(length):
+    #             picture = img.imread(images_cluster[clustering_num[i]][j])
+    #             picture = plt.imshow(picture)
+    #             picture = plt.show()
+
+    # picture = img.imread(labels_cluster[1][1])
+    # picture = plt.imshow(picture)
+
+    return render(
+        request,
+        'register_dog/imageresult.html',
+        {
+            # 'input_image_folder':input_image_folder,
+            # 'filenames':filenames,
+            # 'labels': labels,
+            # 'picture':labels_cluster[0],
+            # 'num': clustering_num,
+            # 'input_image': input_image,
+            'clustering_num': clustering_num.append(i)
+
+        }
+    )
 
 
 
-
-        return redirect('/imageresult/')
-
-    else:
-        return render(
-            request,
-            'register_dog/imageresult.html'
-        )
-
-
-
-
-
-    # image_upload(request.POST['image_upload'])
-    #
-    # images_cluster = Dog_post.objects.all()
-    # return render(
-    #     request,
-    #     'register_dog/imageresult.html',
-    #     {
-    #         'images_cluster':images_cluster
-    #     }
-    # )
-
-# def imageresult(request):
-#     images_cluster = clustering
-#
-#     for i in range(len(images_cluster)):
-#         length = len(images_cluster[i])
-#         if length > 0:
-#             # print(labels_cluster[i])
-#             fig = plt.figure(figsize=(length * 2, 2))
-#             for j in range(length):
-#                 plt.subplot(1, length, j + 1)
-#                 plt.imshow(images_cluster[i][j])
-#                 plt.xticks([])
-#                 plt.yticks([])
-#             plt.show()
-#
-#     return render(
-#         request,
-#         'register_dog/imageresult.html',
-#         {
-#             'images_cluster':images_cluster
-#         }
-#     )
-
-model = SentenceTransformer("Huffon/sentence-klue-roberta-base")
+model2 = SentenceTransformer("Huffon/sentence-klue-roberta-base")
 def textresult(request):
     docs = list(Dog_post.objects.values('description'))
-    document_embeddings = model.encode(docs)
+    document_embeddings = model2.encode(docs)
 
     query = request.POST['text_search']
-    query_embedding = model.encode(query)
+    query_embedding = model2.encode(query)
 
     top_k = min(5, len(docs))
 
