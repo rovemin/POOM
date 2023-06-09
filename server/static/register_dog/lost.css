@@ -1,7 +1,7 @@
 /* 헤더 */
 .nav {
   height: 80px;
- border-bottom: 2px solid #FFDA7C;
+  border-bottom: 2px solid #FFDA7C;
   display: flex;
   align-items: center;
 }
@@ -10,7 +10,6 @@
   display: flex;
   margin-left: auto;
   margin-right: 60px;
-
 }
 
 .nav-item{
@@ -30,75 +29,11 @@
   margin-left: auto;
   margin-right: 20px;
   font-weight: bold;
-
-}
-
-/*검색창*/
-
-.search_box {
-  display: flex;
-justify-content: center;
- align-items: center;
-  margin-top: 30px;
-   margin-bottom: 30px;
-}
-
-.search {
- text-align: center;
-  font-size: 15px;
-  height: 34px;
-  width: 618px;
-  border: 2px solid #D9D9D9;
-  background: #ffffff;
-    border-top-left-radius: 10px;
-border-bottom-left-radius: 10px;
-}
-  input{
-
-  outline: none;
-
-  }
-
-textarea{
-  resize: none;
-}
-
-.sbut {
-
-  text-align: center;
-  width: 60px;
-  height: 40px;
-  border: 2px solid #FFDA7C;
-  border-top-right-radius: 10px;
-border-bottom-right-radius: 10px;
-  background: #FFDA7C;
-  outline: none;
-  float: right;
-  color:black;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.sbut2 {
-  text-align: center;
-  width: 186px;
-  height: 40px;
-  border: 2px solid #FFDA7C;
-  border-radius: 10px;
-  background: #FFDA7C;
-  outline: none;
-  float: right;
-  color:black;
-  margin-right: 15px;
-  font-size: 15px;
-  font-weight: bold;
-
 }
 
 /*입력폼*/
-
 .background{
-    background-color: white;
+  background-color: white;
   border:2px solid #D9D9D9 ;
   width: 880px;
   height: 600px;
@@ -107,24 +42,21 @@ border-bottom-right-radius: 10px;
 
 .form{
   display: flex;
-justify-content: center;
- align-items: left;
+  justify-content: center;
+  align-items: left;
   text-align: left;
   color: black;
   font-weight: normal;
-
-
-
 }
 
 .box {
-
-  margin-top: 30px;
-  margin: auto;
+  margin-top:30px;
+  margin-left:auto;
+  margin-right:auto;
   display: flex;
-justify-content: center;
+  justify-content: center;
   align-items: center;
-font-size: 18px;
+  font-size: 18px;
   font-weight: bold;
   width: 880px;
   height: 40px;
@@ -132,27 +64,21 @@ font-size: 18px;
   border: 2px solid #FFDA7C;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-
 }
+
 .main1 {
-
-float:left;
-
+  float:left;
   margin-right: 60px;
   line-height: 35px;
 }
 
 .main2 {
-float: left;
-
-margin-bottom: 10px;
-   line-height: 35px;
-
+  float: left;
+  margin-bottom: 10px;
+  line-height: 35px;
 }
 
-.but1
-{
-
+.but1 {
   font-size: 16px;
   font-weight: bold;
   width: 300px;
@@ -160,6 +86,26 @@ margin-bottom: 10px;
   border: 2px solid #FFDA7C;
   border-radius: 10px;
   background: #FFDA7C;
-  margin: auto;
-    display: block;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top:30px;
+  display: block;
+}
+
+.table1 {
+    margin: auto;
+    margin-left: 50px;
+    margin-top:50px;
+}
+
+.updateform {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  text-align: left;
+  color: black;
+  font-weight: normal;
+  margin-top:60px;
+  margin-bottom:40px;
+  margin-left:100px;
 }
