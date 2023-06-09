@@ -3,13 +3,11 @@
 <html>
 
 <head>
-
   <meta charset="utf-8">
   <meta name="description" content="POOM">
   <title>POOM</title>
   <link href="{% static 'register_dog/textresult.css' %}" rel="stylesheet" type="text/css" />
 </head>
-
 
 <body>
 
@@ -25,7 +23,6 @@
       <button type="button" class="but" onclick="location.href='{% url 'register_dog:create_post_found' %}'">목격/구조 제보하기</button>
       {% endif %}
 
-      <div class="nav-item" onclick="location.href='{% url 'register_dog:main1' %}'">Home</div>
       {% if user.is_authenticated %}
       <a class="nav-item" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
       {% else %}
@@ -43,104 +40,28 @@
   </div>
 
   <!--검색바-->
-
   <div class="search_box">
-    <button class="sbut2">이미지 검색</button>
-    
-    <input class="search" type="text" placeholder="실종견 검색">
-    <button class="sbut">검색</button>
-
   </div>
 
   <!--검색결과창-->
   <div class="resultbar">
-    <div class="mydog"> 내 반려견의 특징 </div>
     <div class="imageresult"> 텍스트 검색 결과 </div>
   </div>
-  <div class="searchresult">
-
-    <!--내 반려견-->
-
-    <div class="mydogcontainer">
-      <div class="dog_list2">
-        <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
-          <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-            <p>특징:</p>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!--리스트-->
-
     <div class="searchcontainer">
       <div class="dog_list">
-        <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
+      <!--  검색결과 출력    -->
+          {% for item in print_result %}
+          <div class="card" style="cursor:pointer;" onclick="location.href='/detail/{{ item.0 }}/'">
           <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-            <p>특징:</p>
+            <h3>검색 결과</h3>
+            <p> 특징: {{ item.1 }} </p>
           </div>
-        </div>
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
           </div>
-          <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-            <p>특징:</p>
-          </div>
-        </div>
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
-          <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-            <p>특징:</p>
-          </div>
-        </div>
-        <div class="card">
-
-          <div class="image">
-            <img src="" alt="">
-          </div>
-          <div class="text">
-            <h3>글 제목</h3>
-            <p>지역:</p>
-            <p>견종:</p>
-            <p>특징:</p>
-          </div>
-        </div>
-
+          {% endfor %}
       </div>
-
-
     </div>
-
-
-    <!--이미지 검색 팝업-->
-
 
 </body>
 

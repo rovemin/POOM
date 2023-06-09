@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from common.forms import UserForm, CustomUserChangeForm
-from django.contrib.auth.forms import UserChangeForm
 
 def signup(request):
     if request.method == "POST":
@@ -29,5 +28,3 @@ def update(request, pk):
         'form':form
     }
     return render(request, 'common/update.html', context)
-
-
