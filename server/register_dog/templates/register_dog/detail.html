@@ -22,7 +22,6 @@
   <div class="box">글 내용 보기</div>
   <div class="background">
     <div class="details">
-
       <div class="detailimg1">
         {% if post.image1 %}
           <p><img src="{{ post.image1.url }}"></p>
@@ -43,8 +42,6 @@
     </div>
 
       <div class="detailbox">
-
-
       <table class="detailtable">
         <tr>
           <th>글 제목</th>
@@ -111,17 +108,18 @@
               <td>{{ post.author.email }}</td>
           </tr>
       </table>
+      </div>
 
-
-</div>
-        <div class="detailbut">
+      <div class="detailbut">
       <button type="button" class="btn-image" onclick="location.href='{% url 'register_dog:imageresult' %}'">이미지
         검색</button>
-      <button type="button" class="btn-text" onclick="location.href='{% url 'register_dog:textresult' %}'">텍스트
-        검색</button>
-    </div>
-</div>
-
+        <form action="{% url 'register_dog:textresult' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="text_search" value="{{ post.description }}">
+            <button type="submit" class="btn-text" >텍스트 검색</button>
+        </form>
+      </div>
+  </div>
 
 </body>
 

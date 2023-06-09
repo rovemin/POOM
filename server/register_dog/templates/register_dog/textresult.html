@@ -3,13 +3,11 @@
 <html>
 
 <head>
-
   <meta charset="utf-8">
   <meta name="description" content="POOM">
   <title>POOM</title>
   <link href="{% static 'register_dog/textresult.css' %}" rel="stylesheet" type="text/css" />
 </head>
-
 
 <body>
 
@@ -42,27 +40,15 @@
   </div>
 
   <!--검색바-->
-
   <div class="search_box">
-    <button class="sbut2">이미지 검색</button>
-
-    <form  action="{% url 'register_dog:textresult' %}" method="POST">
-      {% csrf_token %}
-      <input name="text_search" class="search" type="text" placeholder="실종견 검색">
-
-    </form>
-    <button class="sbut" type="submit">검색</button>
-
   </div>
 
   <!--검색결과창-->
   <div class="resultbar">
-
     <div class="imageresult"> 텍스트 검색 결과 </div>
   </div>
 
     <!--리스트-->
-
     <div class="searchcontainer">
       <div class="dog_list">
       <!--  검색결과 출력    -->

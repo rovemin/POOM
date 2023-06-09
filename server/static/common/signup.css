@@ -1,7 +1,7 @@
 /* 헤더 */
 .nav {
   height: 80px;
- border-bottom: 2px solid #FFDA7C;
+  border-bottom: 2px solid #FFDA7C;
   display: flex;
   align-items: center;
 }
@@ -31,33 +31,30 @@
   margin-left: auto;
   margin-right: 20px;
   font-weight: bold;
-
 }
 
 /*회원가입*/
-
 .signup-form {
-    width: 500px;
-    background-color: #EEEFF1;
-    margin-right: auto;
-    margin-left: auto;
-
-    padding: 100px;
-    text-align: center;
-    border: none;
-    border-bottom-right-radius: 10px;
+  width: 500px;
+  background-color: #EEEFF1;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 100px;
+  text-align: center;
+  border: none;
+  border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-
 }
 
 .form-control {
-      font-size: 16px;
-      padding: 16px;
-      border: none;
-      width: 300px;
-      margin-bottom: 10px;
+  font-size: 16px;
+  padding: 16px;
+  border: none;
+  width: 300px;
+  margin-bottom: 10px;
   border-radius: 5px;
 }
+
 .btn-primary {
   font-size: 16px;
   border: none;
@@ -70,7 +67,6 @@
 }
 
 .signupbox {
-
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;

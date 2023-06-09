@@ -56,4 +56,3 @@ class Dog_post(models.Model):
 
 class Uploaded_Image(models.Model):
     uploaded_image = models.ImageField(upload_to='images/0000', null=True, blank=True)
-

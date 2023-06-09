@@ -1,7 +1,7 @@
 /* 헤더 */
 .nav {
   height: 80px;
- border-bottom: 2px solid #FFDA7C;
+  border-bottom: 2px solid #FFDA7C;
   display: flex;
   align-items: center;
 }
@@ -10,7 +10,6 @@
   display: flex;
   margin-left: auto;
   margin-right: 60px;
-
 }
 
 .nav-item{
@@ -31,31 +30,27 @@
   margin-left: auto;
   margin-right: 20px;
   font-weight: bold;
-
 }
 
-
 /*로그인*/
-
 .login-form {
-    width: 500px;
-    background-color: #EEEFF1;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 100px;
-    padding: 50px;
-    text-align: center;
-    border: none;
+  width: 500px;
+  background-color: #EEEFF1;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  padding: 50px;
+  text-align: center;
+  border: none;
   border-radius: 5px;
-
 }
 
 .form-control {
-      font-size: 16px;
-      padding: 16px;
-      border: none;
-      width: 300px;
-      margin-bottom: 10px;
+  font-size: 16px;
+  padding: 16px;
+  border: none;
+  width: 300px;
+  margin-bottom: 10px;
   border-radius: 5px;
 }
 
@@ -71,7 +66,7 @@
 }
 
 .links {
-    text-align: center;
+  text-align: center;
 }
 
 .links a {

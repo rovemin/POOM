@@ -25,7 +25,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from sentence_transformers import SentenceTransformer, util
 import torch
 
-
 def main1(request):
     posts = Dog_post.objects.filter(category=1)
 
@@ -111,7 +110,6 @@ def update_image_path(sender, instance, created, **kwargs):
 
         instance.save()
 
-
 def mypage(request):
     posts = Dog_post.objects.all()
 
@@ -134,6 +132,7 @@ def triplet(y_true, y_pred):
     an = K.sum(K.square(a-n), -1)
 
     return K.sum(tf.nn.relu(ap-an+alpha))
+
 # Metric definition
 def triplet_acc(y_true, y_pred):
     a = y_pred[0::3]
@@ -144,7 +143,6 @@ def triplet_acc(y_true, y_pred):
     an = K.sum(K.square(a - n), -1)
 
     return K.less(ap+alpha, an)
-
 
 def imageresult(request):
     if (request.method == 'POST'):
@@ -225,36 +223,13 @@ def imageresult(request):
         if input_image_folder in labels_cluster[i]:
             clustering_num.append(i)
 
-
-    # for i in range(len(clustering_num)):
-    #     length = len(images_cluster[clustering_num[i]])
-    #     if length > 0:
-    #         print(labels_cluster[clustering_num[i]])
-    #         fig = plt.figure(figsize=(length * 2, 2))
-    #         for j in range(length):
-    #             picture = img.imread(images_cluster[clustering_num[i]][j])
-    #             picture = plt.imshow(picture)
-    #             picture = plt.show()
-
-    # picture = img.imread(labels_cluster[1][1])
-    # picture = plt.imshow(picture)
-
     return render(
         request,
         'register_dog/imageresult.html',
         {
-            # 'input_image_folder':input_image_folder,
-            # 'filenames':filenames,
-            # 'labels': labels,
-            # 'picture':labels_cluster[0],
-            # 'num': clustering_num,
-            # 'input_image': input_image,
             'clustering_num': clustering_num.append(i)
-
         }
     )
-
-
 
 model2 = SentenceTransformer("Huffon/sentence-klue-roberta-base")
 def textresult(request):
@@ -268,6 +243,7 @@ def textresult(request):
 
     # 입력 문장 - 문장 후보군 간 코사인 유사도 계산
     cos_scores = util.pytorch_cos_sim(query_embedding, document_embeddings)[0]
+
     # 코사인 유사도 순으로 'top_k' 개 문장 추출
     top_results = torch.topk(cos_scores, k=top_k)
     results = []
@@ -290,11 +266,8 @@ def textresult(request):
     return render(
         request,
         'register_dog/textresult.html',
-
         {
-
             'print_result':print_result,
-
         }
     )
 

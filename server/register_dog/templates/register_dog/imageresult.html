@@ -3,13 +3,11 @@
 <html>
 
 <head>
-
   <meta charset="utf-8">
   <meta name="description" content="POOM">
   <title>POOM</title>
   <link href="{% static 'register_dog/imageresult.css' %}" rel="stylesheet" type="text/css" />
 </head>
-
 
 <body>
 
@@ -43,7 +41,6 @@
   </div>
 
   <!--검색바-->
-
   <div class="search_box">
     <button class="sbut2">이미지 검색</button>
 
@@ -58,38 +55,18 @@
 
   <!--검색결과창-->
   <div class="resultbar">
-
     <div class="imageresult"> 이미지 검색 결과 </div>
   </div>
 
-    <!--리스트-->
-
-    <div class="searchcontainer">
-<!--      <div class="dog_list">-->
-<!--      &lt;!&ndash;  검색결과 출력    &ndash;&gt;-->
-<!--          {% for i in images_cluster %}-->
-<!--          <div class="card" style="cursor:pointer;" onclick="location.href='/detail/<int:pk>/'">-->
-<!--          <div class="text">-->
-<!--            <h3>검색 결과</h3>-->
-<!--            <p> plt.show() </p>-->
-<!--          </div>-->
-<!--          </div>-->
-<!--          {% endfor %}-->
-<!--      </div>-->
-      <div class="dog_list">
-<!--        {% for file in filenames %}-->
-<!--            <p>{{ file }}</p>-->
-<!--            <img src="{{ file }}">-->
-<!--        {% endfor %}-->
-
+  <!--리스트-->
+  <div class="searchcontainer">
+    <div class="dog_list">
         {% for i in clustering_num %}
             <p>{{ i }}</p>
             <img src="{{ i }}">
         {% endfor %}
-
-      </div>
-
     </div>
+  </div>
 
 </body>
 

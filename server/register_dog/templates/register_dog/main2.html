@@ -3,12 +3,10 @@
 <html>
 
 <head>
-
   <meta charset="utf-8">
   <meta name="description" content="POOM">
   <title>POOM</title>
   <link href="{% static 'register_dog/main2.css' %}" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body>
@@ -42,7 +40,6 @@
   </div>
 
   <!--검색바-->
-
   <div class="search_box">
     <div class="image_search_box">
       <button class="sbut2" id="modal_btn">이미지 검색</button>
@@ -50,24 +47,22 @@
       <div class="modal_wrap">
         <div class="modal_close"><a href="#">close</a></div>
         <div class="popupbar"> 이미지로 검색하기 </div>
-        <div class="upload-form">
-          <label for="file">
-            <div class="btn-upload">파일 업로드하기</div>
-          </label>
-        </div>
-        <input type="file" name="file" id="file">
-        <div class="mpbut">
-          <button type="button" class="but4" onclick="location.href='{% url 'register_dog:imageresult' %}'">검색 시작!</button>
-        </div>
-        <div class="discr">
+        <form action="{% url 'register_dog:image' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+          <div class="upload-form">
+            <label for="file">
+              <input name="image_upload" type="file" id="file" class="btn-upload">
+            </label>
+          </div>
+          <div class="mpbut">
+            <button type="submit" class="but4" onclick="location.href='{% url 'register_dog:imageresult' %}'">검색 시작!</button>
+          </div>
+        </form>
+          <div class="discr">
           반려견의 얼굴이 잘 드러나는 사진을 업로드해주세요 <br>
           마이페이지에서는 이미 등록된 반려견을 검색할 수 있습니다!
         </div>
       </div>
     </div>
-
-<!--    <input class="search" type="text" placeholder="실종견 검색">-->
-<!--    <button class="sbut" onclick="location.href='{% url 'register_dog:textresult' %}'">검색</button>-->
 
     <form action="{% url 'register_dog:textresult' %}" method="POST">
       {% csrf_token %}
@@ -82,16 +77,12 @@
     <div class="found_list" onclick="location.href='{% url 'register_dog:main2' %}'"> 제보 목록 </div>
   </div>
 
-
   <!--리스트-->
-
   <div class=" container">
     <div class="dog_list">
       {% if posts.exists %}
-      <!-- 카드 div 를 복제하면 늘어날거임.. 아마 장고 반복문을 쓰면되지않을까 싶은데-->
         {% for p in posts %}
         <div class="card" style="cursor:pointer;" onclick="location.href='/detail/{{ p.pk }}/'">
-
           <div class="image">
             {% if p.image1.url != None %}
               <img src="{{ p.image1.url }}" alt="{{ p }}">
@@ -129,10 +120,6 @@
 
     document.getElementById('modal_btn').addEventListener('click', onClick);
     document.querySelector('.modal_close').addEventListener('click', offClick);
-
-
-
-
   };
 </script>
 

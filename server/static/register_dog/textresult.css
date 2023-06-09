@@ -1,7 +1,7 @@
 /* 헤더 */
 .nav {
   height: 80px;
- border-bottom: 2px solid #FFDA7C;
+  border-bottom: 2px solid #FFDA7C;
   display: flex;
   align-items: center;
 }
@@ -10,7 +10,6 @@
   display: flex;
   margin-left: auto;
   margin-right: 60px;
-
 }
 
 .nav-item{
@@ -30,17 +29,15 @@
   margin-left: auto;
   margin-right: 20px;
   font-weight: bold;
-
 }
-
 
 /*검색창*/
 .sbut2 {
-   display: flex;
-justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
-   margin-bottom: 30px;
+  margin-bottom: 30px;
   text-align: center;
   width: 186px;
   height: 40px;
@@ -53,52 +50,47 @@ justify-content: center;
   margin-right: 15px;
   font-size: 15px;
   font-weight: bold;
-
 }
 
 .search_box {
   display: flex;
-justify-content: center;
- align-items: center;
+  justify-content: center;
+  align-items: center;
   margin-top:15px;
-   margin-bottom: 15px;
-
+  margin-bottom: 15px;
 }
 
 .search {
-    display: flex;
-justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
-   margin-bottom: 30px;
- text-align: center;
+  margin-bottom: 30px;
+  text-align: center;
   font-size: 15px;
   height: 34px;
-  width: 618px;
+  width: 618cardpx;
   border: 2px solid #D9D9D9;
   background: #ffffff;
-    border-top-left-radius: 10px;
-border-bottom-left-radius: 10px;
-
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
-  input{
 
+input {
   outline: none;
+}
 
-  }
-
-textarea{
+textarea {
   resize: none;
 }
 
 .sbut {
-
   text-align: center;
   width: 60px;
   height: 40px;
   border: 2px solid #FFDA7C;
   border-top-right-radius: 10px;
-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   background: #FFDA7C;
   outline: none;
   float: right;
@@ -107,26 +99,19 @@ border-bottom-right-radius: 10px;
   font-weight: bold;
 }
 
-
-
-/*리스트 설명*/
-
-
 /*리스트*/
 .resultbar{
-   display: flex;
+  display: flex;
   justify-content:center;
-   width: 646px;
+  width: 646px;
   margin:auto;
-
 }
-
 
 .imageresult{
   display:flex;
-   justify-content: center;
+  justify-content: center;
   align-items: center;
-font-size: 18px;
+  font-size: 18px;
   font-weight: bold;
   width: 646px;
   height: 40px;
@@ -134,34 +119,27 @@ font-size: 18px;
   border: 1px solid #FFDA7C;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-
-
 }
-
-
 
 .searchcontainer{
   display: flex;
   width: 646px;
   margin:auto;
-
 }
 
 .dog_list{
-
   flex-direction:column;
 }
+
 .dog_list .card{
   border: 1px solid #D9D9D9;
-  height: 100px;
+  height: 115px;
   width: 646px;
   margin-top: 5px;
   margin-bottom: 5px;
-font-size: 14px;
-
+  font-size: 14px;
 }
+
 .card .text{
-margin-left: 10px;
+  margin-left: 10px;
 }
-
-

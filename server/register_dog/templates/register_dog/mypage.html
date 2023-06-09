@@ -3,7 +3,6 @@
 <html>
 
 <head>
-
   <meta charset="utf-8">
   <meta name="description" content="POOM">
   <title>POOM</title>
@@ -30,10 +29,6 @@
       <a class="nav-item" href="{% url 'common:login' %}">로그인</a>
       {% endif %}
 
-      <!-- {% if user.is_authenticated %}
-      <div class="nav-item" onclick="location.href='{% url 'register_dog:mypage' %}'">마이페이지 </div>
-      {% endif %} -->
-
       {% if not user.is_authenticated %}
       <a class="nav-item" href="{% url 'common:signup' %}">회원가입</a>
       {% endif %}
@@ -44,7 +39,6 @@
     </div>
   </div>
 
-
   <!--마이페이지-->
   <div class="mypage">
     <div class="mypagebar">
@@ -54,7 +48,6 @@
     <div class="searchresult">
 
       <!--내 정보-->
-
       <div class="mydogcontainer">
         <div class="profile">
           <div class="card">
@@ -71,14 +64,11 @@
       </div>
 
       <!--리스트-->
-
       <div class="searchcontainer">
         <div class="dog_list">
-          <!-- 반복문으로 게시물 -->
           {% if posts.exists %}
             {% for p in posts %}
           <div class="card" style="cursor:pointer;" onclick="location.href='/detail/{{ p.pk }}/'">
-
             <div class="image">
               <img src="{{ p.image1.url }}" alt="{{ p }}">
             </div>
@@ -88,18 +78,15 @@
               <p>지역: {{ p.location_city }}</p>
               <button class="mfbut" id="modal_btn2" onclick="location.href='/detail/{{ p.pk }}/'">자세히</button>
             </div>
-          </div> <!-- card 끝 -->
+          </div>
             {% endfor %}
           {% else %}
             <h3 class="text">아직 게시물이 없습니다.</h3>
           {% endif %}
         </div>
-
-
       </div>
 
     </div>
-    <!--이미지 검색 팝업-->
 
   </div>
 
